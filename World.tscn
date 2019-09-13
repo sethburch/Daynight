@@ -1,7 +1,7 @@
 [gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://jump_fall.png" type="Texture" id=2]
+[ext_resource path="res://sprites/jump_fall.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Slime.gd" type="Script" id=3]
 [ext_resource path="res://sprites/slime sprites/slime.png" type="Texture" id=4]
 [ext_resource path="res://sprites/slime sprites/slime_idle2.png" type="Texture" id=5]
@@ -9,19 +9,19 @@
 [ext_resource path="res://sprites/slime sprites/slime_jump.png" type="Texture" id=7]
 [ext_resource path="res://scripts/BodySprite.gd" type="Script" id=8]
 [ext_resource path="res://sprites/slime sprites/slime_eyes_f.png" type="Texture" id=9]
-[ext_resource path="res://sprites/slime sprites/slime_eyes_prej.png" type="Texture" id=10]
-[ext_resource path="res://sprites/slime sprites/slime_eyes_d.png" type="Texture" id=11]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_u.png" type="Texture" id=10]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_prej.png" type="Texture" id=11]
 [ext_resource path="res://sprites/slime sprites/slime_eyes_r.png" type="Texture" id=12]
-[ext_resource path="res://sprites/slime sprites/slime_eyes_u.png" type="Texture" id=13]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_d.png" type="Texture" id=13]
 [ext_resource path="res://scripts/EyesSprite.gd" type="Script" id=14]
 [ext_resource path="res://sprites/slime sprites/slime_brows_f_normal.png" type="Texture" id=15]
 [ext_resource path="res://sprites/slime sprites/slime_brows_f_angry.png" type="Texture" id=16]
-[ext_resource path="res://sprites/slime sprites/slime_brows_prej_normal.png" type="Texture" id=17]
-[ext_resource path="res://sprites/slime sprites/slime_brows_prej_angry.png" type="Texture" id=18]
-[ext_resource path="res://sprites/slime sprites/slime_brows_r_normal.png" type="Texture" id=19]
-[ext_resource path="res://sprites/slime sprites/slime_brows_r_angry.png" type="Texture" id=20]
-[ext_resource path="res://sprites/slime sprites/slime_brows_u_normal.png" type="Texture" id=21]
-[ext_resource path="res://sprites/slime sprites/slime_brows_u_angry.png" type="Texture" id=22]
+[ext_resource path="res://sprites/slime sprites/slime_brows_u_normal.png" type="Texture" id=17]
+[ext_resource path="res://sprites/slime sprites/slime_brows_u_angry.png" type="Texture" id=18]
+[ext_resource path="res://sprites/slime sprites/slime_brows_prej_normal.png" type="Texture" id=19]
+[ext_resource path="res://sprites/slime sprites/slime_brows_prej_angry.png" type="Texture" id=20]
+[ext_resource path="res://sprites/slime sprites/slime_brows_r_normal.png" type="Texture" id=21]
+[ext_resource path="res://sprites/slime sprites/slime_brows_r_angry.png" type="Texture" id=22]
 [ext_resource path="res://scripts/BrowsSprite.gd" type="Script" id=23]
 [ext_resource path="res://scripts/Fire Skull.gd" type="Script" id=24]
 [ext_resource path="res://sprites/fireSkull sprites/fsfire1.png" type="Texture" id=25]
@@ -35,7 +35,7 @@
 [ext_resource path="res://scripts/SkullSprite.gd" type="Script" id=33]
 [ext_resource path="res://icon.png" type="Texture" id=34]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 0.6
 loop = true
@@ -52,7 +52,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "jump_fall"
 length = 0.2
 loop = true
@@ -69,7 +69,7 @@ tracks/0/keys = {
 "values": [ 5, 6 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "jump_inital"
 length = 0.1
 tracks/0/type = "value"
@@ -85,7 +85,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=4]
 resource_name = "jump_peak"
 length = 0.2
 tracks/0/type = "value"
@@ -101,7 +101,7 @@ tracks/0/keys = {
 "values": [ 3, 4 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=5]
 resource_name = "jump_rise"
 length = 0.2
 loop = true
@@ -118,7 +118,7 @@ tracks/0/keys = {
 "values": [ 1, 2 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=6]
 resource_name = "squash"
 length = 0.1
 tracks/0/type = "value"
@@ -134,10 +134,10 @@ tracks/0/keys = {
 "values": [ 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 2.3855, 9.12274 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
@@ -155,7 +155,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
@@ -164,12 +164,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "Prejump",
+"name": "LookUp",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "LookDown",
+"name": "Prejump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -179,11 +179,11 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "LookDown",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
@@ -192,27 +192,27 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "Prejump",
+"name": "LookUp",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "LookSide",
+"name": "Prejump",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "LookSide",
 "speed": 0.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 8.5, 8 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=12]
 radius = 100.0
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
@@ -220,7 +220,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ ExtResource( 30 ) ],
 "loop": true,
@@ -233,36 +233,33 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=15]
 radius = 100.0
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 32.653, 32 )
 
 [node name="World" type="Node"]
 
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 960, 384 )
+position = Vector2( 959.146, 385.139 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 2 )
 hframes = 8
-frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Sprite"]
-anims/idle = SubResource( 11 )
-anims/jump_fall = SubResource( 12 )
-anims/jump_inital = SubResource( 13 )
-anims/jump_peak = SubResource( 14 )
-anims/jump_rise = SubResource( 15 )
-anims/squash = SubResource( 16 )
+anims/idle = SubResource( 1 )
+anims/jump_fall = SubResource( 2 )
+anims/jump_inital = SubResource( 3 )
+anims/jump_peak = SubResource( 4 )
+anims/jump_rise = SubResource( 5 )
+anims/squash = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 1 )
+position = Vector2( 0.0408325, 6.87686 )
+shape = SubResource( 7 )
 
 [node name="Slime" type="KinematicBody2D" parent="."]
 editor/display_folded = true
@@ -274,31 +271,32 @@ __meta__ = {
 }
 
 [node name="BodySprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 2 )
+frames = SubResource( 8 )
 animation = "Idle"
+frame = 1
 playing = true
 script = ExtResource( 8 )
 
 [node name="EyesSprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 3 )
+frames = SubResource( 9 )
 animation = "Idle"
 playing = true
 script = ExtResource( 14 )
 
 [node name="BrowsSprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 4 )
+frames = SubResource( 10 )
 animation = "Idle"
 playing = true
 script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slime"]
 position = Vector2( 0, 7 )
-shape = SubResource( 5 )
+shape = SubResource( 11 )
 
 [node name="PlayerDetect" type="Area2D" parent="Slime"]
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="Slime/PlayerDetect"]
-shape = SubResource( 6 )
+shape = SubResource( 12 )
 
 [node name="Fire Skull" type="KinematicBody2D" parent="."]
 editor/display_folded = true
@@ -310,26 +308,26 @@ __meta__ = {
 }
 
 [node name="FireSprite" type="AnimatedSprite" parent="Fire Skull"]
-frames = SubResource( 7 )
+frames = SubResource( 13 )
 animation = "Idle"
-frame = 2
+frame = 3
 playing = true
 script = ExtResource( 29 )
 
 [node name="SkullSprite" type="AnimatedSprite" parent="Fire Skull"]
-frames = SubResource( 8 )
+frames = SubResource( 14 )
 animation = "Idle"
 playing = true
 script = ExtResource( 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire Skull"]
 position = Vector2( -2, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 11 )
 
 [node name="PlayerDetect" type="Area2D" parent="Fire Skull"]
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="Fire Skull/PlayerDetect"]
-shape = SubResource( 9 )
+shape = SubResource( 15 )
 
 [node name="Walls" type="Node" parent="."]
 editor/display_folded = true
@@ -347,7 +345,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall15"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall20" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -362,7 +360,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall20"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall21" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -377,7 +375,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall21"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall16" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -392,7 +390,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall16"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall17" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -407,7 +405,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall17"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall18" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -422,7 +420,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall18"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall19" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -437,7 +435,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall19"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall23" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -452,7 +450,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall23"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall24" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -467,7 +465,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall24"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall25" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -482,7 +480,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall25"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall26" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -497,7 +495,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall26"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall27" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -512,7 +510,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall27"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall14" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -527,7 +525,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall14"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall13" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -542,7 +540,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall13"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall22" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -557,7 +555,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall22"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall12" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -572,7 +570,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall12"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall11" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -587,7 +585,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall11"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall10" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -602,7 +600,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall10"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall9" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -617,7 +615,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall9"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall8" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -632,7 +630,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall8"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall7" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -647,7 +645,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall7"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall6" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -662,7 +660,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall6"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall5" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -677,7 +675,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall5"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall4" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -692,7 +690,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall3" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -707,7 +705,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall2" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -722,7 +720,7 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Wall" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -737,4 +735,4 @@ show_behind_parent = true
 texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
