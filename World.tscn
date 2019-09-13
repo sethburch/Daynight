@@ -1,53 +1,153 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=51 format=2]
 
-[ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Slime.gd" type="Script" id=3]
-[ext_resource path="res://slime sprites/slime_prejump.png" type="Texture" id=4]
-[ext_resource path="res://slime sprites/slime.png" type="Texture" id=5]
-[ext_resource path="res://slime sprites/slime_idle2.png" type="Texture" id=6]
-[ext_resource path="res://slime sprites/slime_jump.png" type="Texture" id=7]
-[ext_resource path="res://BodySprite.gd" type="Script" id=8]
-[ext_resource path="res://slime sprites/slime_eyes_d.png" type="Texture" id=9]
-[ext_resource path="res://slime sprites/slime_eyes_prej.png" type="Texture" id=10]
-[ext_resource path="res://slime sprites/slime_eyes_f.png" type="Texture" id=11]
-[ext_resource path="res://slime sprites/slime_eyes_u.png" type="Texture" id=12]
-[ext_resource path="res://slime sprites/slime_eyes_r.png" type="Texture" id=13]
-[ext_resource path="res://EyesSprite.gd" type="Script" id=14]
-[ext_resource path="res://slime sprites/slime_brows_prej_normal.png" type="Texture" id=15]
-[ext_resource path="res://slime sprites/slime_brows_prej_angry.png" type="Texture" id=16]
-[ext_resource path="res://slime sprites/slime_brows_f_normal.png" type="Texture" id=17]
-[ext_resource path="res://slime sprites/slime_brows_f_angry.png" type="Texture" id=18]
-[ext_resource path="res://slime sprites/slime_brows_u_normal.png" type="Texture" id=19]
-[ext_resource path="res://slime sprites/slime_brows_u_angry.png" type="Texture" id=20]
-[ext_resource path="res://slime sprites/slime_brows_r_normal.png" type="Texture" id=21]
-[ext_resource path="res://slime sprites/slime_brows_r_angry.png" type="Texture" id=22]
-[ext_resource path="res://BrowsSprite.gd" type="Script" id=23]
-[ext_resource path="res://Fire Skull.gd" type="Script" id=24]
-[ext_resource path="res://fireSkull sprites/fsfire1.png" type="Texture" id=25]
-[ext_resource path="res://fireSkull sprites/fsfire2.png" type="Texture" id=26]
-[ext_resource path="res://fireSkull sprites/fsfire3.png" type="Texture" id=27]
-[ext_resource path="res://fireSkull sprites/fsfire4.png" type="Texture" id=28]
-[ext_resource path="res://FireSprite.gd" type="Script" id=29]
-[ext_resource path="res://fireSkull sprites/fsskullopen1.png" type="Texture" id=30]
-[ext_resource path="res://fireSkull sprites/fsskullopen2.png" type="Texture" id=31]
-[ext_resource path="res://fireSkull sprites/fsskullidle.png" type="Texture" id=32]
-[ext_resource path="res://SkullSprite.gd" type="Script" id=33]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://jump_fall.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Slime.gd" type="Script" id=3]
+[ext_resource path="res://sprites/slime sprites/slime.png" type="Texture" id=4]
+[ext_resource path="res://sprites/slime sprites/slime_idle2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/slime sprites/slime_prejump.png" type="Texture" id=6]
+[ext_resource path="res://sprites/slime sprites/slime_jump.png" type="Texture" id=7]
+[ext_resource path="res://scripts/BodySprite.gd" type="Script" id=8]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_f.png" type="Texture" id=9]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_prej.png" type="Texture" id=10]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_d.png" type="Texture" id=11]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_r.png" type="Texture" id=12]
+[ext_resource path="res://sprites/slime sprites/slime_eyes_u.png" type="Texture" id=13]
+[ext_resource path="res://scripts/EyesSprite.gd" type="Script" id=14]
+[ext_resource path="res://sprites/slime sprites/slime_brows_f_normal.png" type="Texture" id=15]
+[ext_resource path="res://sprites/slime sprites/slime_brows_f_angry.png" type="Texture" id=16]
+[ext_resource path="res://sprites/slime sprites/slime_brows_prej_normal.png" type="Texture" id=17]
+[ext_resource path="res://sprites/slime sprites/slime_brows_prej_angry.png" type="Texture" id=18]
+[ext_resource path="res://sprites/slime sprites/slime_brows_r_normal.png" type="Texture" id=19]
+[ext_resource path="res://sprites/slime sprites/slime_brows_r_angry.png" type="Texture" id=20]
+[ext_resource path="res://sprites/slime sprites/slime_brows_u_normal.png" type="Texture" id=21]
+[ext_resource path="res://sprites/slime sprites/slime_brows_u_angry.png" type="Texture" id=22]
+[ext_resource path="res://scripts/BrowsSprite.gd" type="Script" id=23]
+[ext_resource path="res://scripts/Fire Skull.gd" type="Script" id=24]
+[ext_resource path="res://sprites/fireSkull sprites/fsfire1.png" type="Texture" id=25]
+[ext_resource path="res://sprites/fireSkull sprites/fsfire2.png" type="Texture" id=26]
+[ext_resource path="res://sprites/fireSkull sprites/fsfire3.png" type="Texture" id=27]
+[ext_resource path="res://sprites/fireSkull sprites/fsfire4.png" type="Texture" id=28]
+[ext_resource path="res://scripts/FireSprite.gd" type="Script" id=29]
+[ext_resource path="res://sprites/fireSkull sprites/fsskullidle.png" type="Texture" id=30]
+[ext_resource path="res://sprites/fireSkull sprites/fsskullopen1.png" type="Texture" id=31]
+[ext_resource path="res://sprites/fireSkull sprites/fsskullopen2.png" type="Texture" id=32]
+[ext_resource path="res://scripts/SkullSprite.gd" type="Script" id=33]
+[ext_resource path="res://icon.png" type="Texture" id=34]
+
+[sub_resource type="Animation" id=11]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "jump_fall"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "jump_inital"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "jump_peak"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "jump_rise"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "squash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7 ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "Prejump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Prejump",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
@@ -55,11 +155,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "LookDown",
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
@@ -69,50 +169,50 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
-"name": "Idle",
+"name": "LookDown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "LookSide",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "LookSide",
+"name": "LookUp",
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "Prejump",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 0.0
 }, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Prejump",
+"speed": 0.0
+}, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "LookSide",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "LookSide",
+"name": "LookUp",
 "speed": 0.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 8.5, 8 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=6]
 radius = 100.0
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
@@ -120,23 +220,23 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ ExtResource( 30 ), ExtResource( 31 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "Attack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 32 ) ],
+"frames": [ ExtResource( 30 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "Attack",
+"speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=9]
 radius = 100.0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 32.653, 32 )
 
 [node name="World" type="Node"]
@@ -150,11 +250,22 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="Player"]
 texture = ExtResource( 2 )
+hframes = 8
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Sprite"]
+anims/idle = SubResource( 11 )
+anims/jump_fall = SubResource( 12 )
+anims/jump_inital = SubResource( 13 )
+anims/jump_peak = SubResource( 14 )
+anims/jump_rise = SubResource( 15 )
+anims/squash = SubResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource( 1 )
 
 [node name="Slime" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 96, 352 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
@@ -163,34 +274,34 @@ __meta__ = {
 }
 
 [node name="BodySprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 animation = "Idle"
-frame = 1
 playing = true
 script = ExtResource( 8 )
 
 [node name="EyesSprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 6 )
+frames = SubResource( 3 )
 animation = "Idle"
 playing = true
 script = ExtResource( 14 )
 
 [node name="BrowsSprite" type="AnimatedSprite" parent="Slime"]
-frames = SubResource( 7 )
+frames = SubResource( 4 )
 animation = "Idle"
 playing = true
 script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Slime"]
 position = Vector2( 0, 7 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="PlayerDetect" type="Area2D" parent="Slime"]
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="Slime/PlayerDetect"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Fire Skull" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 480, 448 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 24 )
@@ -199,26 +310,26 @@ __meta__ = {
 }
 
 [node name="FireSprite" type="AnimatedSprite" parent="Fire Skull"]
-frames = SubResource( 8 )
+frames = SubResource( 7 )
 animation = "Idle"
-frame = 3
+frame = 2
 playing = true
 script = ExtResource( 29 )
 
 [node name="SkullSprite" type="AnimatedSprite" parent="Fire Skull"]
-frames = SubResource( 9 )
+frames = SubResource( 8 )
 animation = "Idle"
 playing = true
 script = ExtResource( 33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fire Skull"]
 position = Vector2( -2, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="PlayerDetect" type="Area2D" parent="Fire Skull"]
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="Fire Skull/PlayerDetect"]
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="Walls" type="Node" parent="."]
 editor/display_folded = true
@@ -233,10 +344,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall15"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall15"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall20" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -248,10 +359,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall20"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall20"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall21" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -263,10 +374,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall21"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall21"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall16" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -278,10 +389,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall16"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall16"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall17" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -293,10 +404,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall17"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall17"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall18" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -308,10 +419,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall18"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall18"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall19" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -323,10 +434,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall19"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall19"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall23" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -338,10 +449,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall23"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall23"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall24" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -353,10 +464,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall24"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall24"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall25" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -368,10 +479,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall25"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall25"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall26" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -383,10 +494,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall26"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall26"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall27" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -398,10 +509,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall27"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall27"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall14" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -413,10 +524,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall14"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall14"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall13" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -428,10 +539,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall13"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall13"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall22" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -443,10 +554,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall22"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall22"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall12" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -458,10 +569,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall12"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall12"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall11" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -473,10 +584,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall11"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall11"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall10" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -488,10 +599,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall10"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall10"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall9" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -503,10 +614,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall9"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall9"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall8" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -518,10 +629,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall8"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall8"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall7" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -533,10 +644,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall7"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall7"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall6" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -548,10 +659,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall6"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall6"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall5" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -563,10 +674,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall5"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall5"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall4" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -578,10 +689,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall4"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall3" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -593,10 +704,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall3"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall2" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -608,10 +719,10 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall2"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 
 [node name="Wall" type="StaticBody2D" parent="Walls"]
 editor/display_folded = true
@@ -623,7 +734,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Walls/Wall"]
 modulate = Color( 0.219608, 1, 0, 1 )
 show_behind_parent = true
-texture = ExtResource( 2 )
+texture = ExtResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
