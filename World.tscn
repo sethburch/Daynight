@@ -274,7 +274,7 @@ __meta__ = {
 [node name="FireSprite" type="AnimatedSprite" parent="Fire Skull"]
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 3
+frame = 1
 playing = true
 script = ExtResource( 48 )
 
