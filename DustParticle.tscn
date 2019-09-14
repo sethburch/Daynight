@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ParticlesMat.tres" type="Material" id=1]
+[ext_resource path="res://sprites/particle.png" type="Texture" id=2]
+[ext_resource path="res://DustParticle.gd" type="Script" id=3]
+
+[node name="DustParticle" type="Particles2D"]
+position = Vector2( 1152, 816 )
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
+const DUST_PARTICLE = preload("res://DustParticle.tscn")
+
 const UP = Vector2(0, -1)
 const GRAVITY = Vector2(0, 900)
-const MAX_FALL_SPEED = 500
+const MAX_FALL_SPEED = Vector2(0, 1500)
 const JUMP_SPEED = 400
 const JUMP_HEIGHT = 400
 const ACCELERATION = 50
@@ -27,17 +29,20 @@ var jump_release_buffer = 0
 
 func _physics_process(delta):
 
-	#add gravity
-	motion += delta * GRAVITY
+	#add gravity if we havent reached max fall speed yet
+	if motion.y < MAX_FALL_SPEED.y:
+		motion += delta * GRAVITY
 	
 	#move
 	motion = move_and_slide(motion, UP)
 	
+	#play idle if we're not landing
 	if anim != "squash":
 		new_anim = "idle"
 	
 	#play landing animation when hitting ground
 	if is_on_floor() and anim == "jump_fall":
+		dust_particle()
 		new_anim = "squash"
 
 	#coyote jump buffer
@@ -64,6 +69,7 @@ func _physics_process(delta):
 		jump_buffer = 0
 		motion.y = -JUMP_SPEED
 		new_anim = "jump_inital"
+		dust_particle()
 	#play jump animations
 	elif !is_on_floor():
 		if motion.y > -100 and motion.y < 100:
@@ -85,6 +91,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("move_right"):
 			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
 			if motion.x < ACCELERATION*4:
+				dust_particle()
 				new_anim = "run_inital"
 			else:
 				new_anim = "run"
@@ -92,7 +99,8 @@ func _physics_process(delta):
 			friction = false
 		elif Input.is_action_pressed("move_left"):
 			motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
-			if motion.x > ACCELERATION*4:
+			if motion.x > -ACCELERATION*4:
+				dust_particle()
 				new_anim = "run_inital"
 			else:
 				new_anim = "run"
@@ -112,6 +120,11 @@ func _physics_process(delta):
 			friction = false
 		else:
 			friction = true
+			
+	if is_on_floor():
+		if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
+			if randi() % 12 == 0:
+				dust_particle()
 
 	#deceleration
 	if is_on_floor():
@@ -131,3 +144,10 @@ func _process(delta):
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":
 		new_anim = "idle"
+		
+func dust_particle():
+	var dust_particle = DUST_PARTICLE.instance()
+	get_parent().add_child(dust_particle)
+	dust_particle.set_position(self.get_position())
+	dust_particle.position.y += 30
+	dust_particle.position.x += 16

@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://FireballPart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/particle.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.0037037, 0.237037, 0.255556, 0.503704, 0.533333, 0.740741, 0.755556, 0.766667 )
+colors = PoolColorArray( 1, 1, 0.894118, 1, 1, 0.951884, 0.67451, 1, 1, 0.847059, 0.196078, 1, 1, 0.817234, 0.1992, 1, 1, 0.509804, 0.231373, 1, 1, 0.509804, 0.231373, 1, 0.819608, 0.25098, 0.121569, 1, 0.819608, 0.25098, 0.121569, 1 )
+
+[sub_resource type="GradientTexture" id=15]
+gradient = SubResource( 14 )
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0.8157 ), 0.0, 0.0, 0, 0, Vector2( 0.0413116, 0.8685 ), 4.66189, 4.66189, 0, 0, Vector2( 0.168439, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+next_pass = SubResource( 12 )
+emission_shape = 1
+emission_sphere_radius = 1.86
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 387.32
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 4.0
+angle = 360.0
+angle_random = 1.0
+scale = 3.0
+scale_curve = SubResource( 16 )
+color_ramp = SubResource( 15 )
+
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 13 )
+
+[sub_resource type="Gradient" id=19]
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 19 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+next_pass = SubResource( 12 )
+trail_color_modifier = SubResource( 17 )
+emission_shape = 1
+emission_sphere_radius = 6.01
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 387.32
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 4.0
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+scale_curve = SubResource( 18 )
+color = Color( 0.819608, 0.25098, 0.121569, 1 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 73.1294, 4.88654 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="FireballPart" type="Particles2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 822.314, 375.822 )
+amount = 100
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+
+[node name="FireballPart2" type="Particles2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 822.314, 375.822 )
+z_index = -2
+amount = 100
+lifetime = 0.8
+local_coords = false
+process_material = SubResource( 20 )
+texture = ExtResource( 2 )
