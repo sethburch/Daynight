@@ -1,6 +1,8 @@
 extends KinematicBody2D
+class_name Player
 
-const DUST_PARTICLE = preload("res://DustParticle.tscn")
+const DUST_PARTICLE = preload("../scenes/DustParticle.tscn")
+const SPELL = preload("../scenes/Spell.tscn")
 
 const UP = Vector2(0, -1)
 const GRAVITY = Vector2(0, 900)
@@ -27,7 +29,20 @@ var coyote_jump_buffer = 0
 var jump_buffer = 0
 var jump_release_buffer = 0
 
+var haxis = 1
+var vaxis = 0
+var player_dir = haxis
+
+func _ready():
+	add_to_group("Player")
+
 func _physics_process(delta):
+
+	haxis = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	vaxis = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	
+	if haxis != 0:
+		player_dir = haxis
 
 	#add gravity if we havent reached max fall speed yet
 	if motion.y < MAX_FALL_SPEED.y:
@@ -121,6 +136,7 @@ func _physics_process(delta):
 		else:
 			friction = true
 			
+	#random dust particles when moving
 	if is_on_floor():
 		if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 			if randi() % 12 == 0:
@@ -133,6 +149,14 @@ func _physics_process(delta):
 	else:
 		if friction:
 			motion.x = lerp(motion.x, 0, AIR_FRICTION)
+			
+	#cast fireball
+#	if Input.is_action_just_pressed("cast"):
+#		var spell = SPELL.instance()
+#		get_node("..").add_child(spell)
+#		spell.set_position($Cast.get_position()+self.get_position())
+#		spell.dir = Vector2(player_dir, 0)
+#		spell._beam()
 
 func _process(delta):
 	#play animation
@@ -140,6 +164,13 @@ func _process(delta):
 		anim = new_anim
 		$Sprite.play(anim)
 	$Sprite.flip_h = !facing_right
+	
+	#set cast position (ghetto but works)
+	if player_dir == -1 and sign($Cast.position.x) == 1:
+		$Cast.position.x *= -1
+	if player_dir ==  1 and sign($Cast.position.x) == -1:
+		$Cast.position.x = abs($Cast.position.x)
+		
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":
@@ -147,7 +178,10 @@ func _on_Sprite_animation_finished():
 		
 func dust_particle():
 	var dust_particle = DUST_PARTICLE.instance()
-	get_parent().add_child(dust_particle)
+	get_node("..").add_child(dust_particle)
 	dust_particle.set_position(self.get_position())
-	dust_particle.position.y += 30
-	dust_particle.position.x += 16
+	dust_particle.position.y += 16
+	dust_particle.position.x -= 2
+	
+func get_cast_position() -> Vector2:
+	return $Cast.position + position

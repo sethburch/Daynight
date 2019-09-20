@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Spell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/SpellFire.gd" type="Script" id=2]
+
+[node name="SpellFire" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+MAX_FALL_SPEED = 10
+GRAVITY = 1
+ACCELERATION = 10
+MAX_SPEED = 400
+SPEED = 10
+TRAVEL_TIME = 2
