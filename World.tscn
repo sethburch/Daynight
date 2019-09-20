@@ -155,6 +155,7 @@ __meta__ = {
 [node name="BodySprite" type="AnimatedSprite" parent="Slime"]
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 1
 playing = true
 script = ExtResource( 8 )
 
@@ -190,7 +191,6 @@ __meta__ = {
 [node name="FireSprite" type="AnimatedSprite" parent="Fire Skull"]
 frames = SubResource( 6 )
 animation = "Idle"
-frame = 1
 playing = true
 script = ExtResource( 29 )
 
