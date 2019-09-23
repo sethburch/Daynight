@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends Enemy
 
 const MAX_SPEED = 3
 const ACCEL = 0.1
-var motion = Vector2(0, 0)
+#var motion = Vector2(0, 0)
 var wanderTimer = 0
 var attackTimer = 60
 var target = Vector2()

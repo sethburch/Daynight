@@ -25,7 +25,7 @@ curve = SubResource( 4 )
 [resource]
 next_pass = SubResource( 3 )
 emission_shape = 1
-emission_sphere_radius = 1.6
+emission_sphere_radius = 7.42
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 angular_velocity = 387.32

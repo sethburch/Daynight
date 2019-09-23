@@ -9,5 +9,4 @@ func _process(delta):
 
 
 func screen_shake(duration, frequency, amplitude):
-	get_node("Player/Camera2D").shake(.2, 15, 8)
-	
+	get_node("Player/Camera2D").shake(duration, frequency, amplitude)

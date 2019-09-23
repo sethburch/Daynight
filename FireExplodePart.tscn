@@ -9,7 +9,7 @@ colors = PoolColorArray( 1, 1, 0.894118, 1, 1, 0.951884, 0.67451, 1, 1, 0.847059
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=3]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -24,8 +24,8 @@ _data = [ Vector2( 0, 0.8157 ), 0.0, 0.0, 0, 0, Vector2( 0.0413116, 0.8685 ), 4.
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=7]
-next_pass = SubResource( 6 )
+[sub_resource type="ParticlesMaterial" id=6]
+next_pass = SubResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 13.31
 flag_disable_z = true
@@ -47,5 +47,6 @@ amount = 20
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource( 7 )
+local_coords = false
+process_material = SubResource( 6 )
 texture = ExtResource( 1 )

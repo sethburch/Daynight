@@ -1,10 +1,10 @@
-extends KinematicBody2D
+extends Enemy
 
 const UP = Vector2(0, -1)
 const GRAVITY = 20
 const JUMP_VEL_HIGH = Vector2(250, -575)
 const JUMP_VEL_LOW = Vector2(150, -450)
-var motion = Vector2()
+#var motion = Vector2()
 var waitTimer = 100
 var target = Vector2(0,0)
 var angry = false

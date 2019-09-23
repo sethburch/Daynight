@@ -4,10 +4,10 @@
 [ext_resource path="res://scenes/FireballPart.tres" type="Material" id=2]
 [ext_resource path="res://sprites/particle.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=11]
-radius = 6.20961
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.6297
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -16,22 +16,22 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0.8157 ), 0.0, 0.0, 0, 0, Vector2( 0.0413116, 0.8685 ), 4.66189, 4.66189, 0, 0, Vector2( 0.168439, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=5]
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=10]
-next_pass = SubResource( 3 )
-trail_color_modifier = SubResource( 9 )
+[sub_resource type="ParticlesMaterial" id=7]
+next_pass = SubResource( 2 )
+trail_color_modifier = SubResource( 6 )
 emission_shape = 1
-emission_sphere_radius = 6.01
+emission_sphere_radius = 13.49
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 angular_velocity = 387.32
@@ -42,18 +42,17 @@ linear_accel = 4.0
 angle = 360.0
 angle_random = 1.0
 scale = 2.0
-scale_curve = SubResource( 7 )
+scale_curve = SubResource( 4 )
 color = Color( 0.819608, 0.25098, 0.121569, 1 )
 
 [node name="Spell" type="Area2D"]
 z_index = 1
+collision_layer = 2
+collision_mask = 0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 11 )
+shape = SubResource( 1 )
 
 [node name="Particles" type="Node2D" parent="."]
 
@@ -72,5 +71,8 @@ amount = 100
 lifetime = 0.8
 visibility_rect = Rect2( -1000, -1000, 2000, 2000 )
 local_coords = false
-process_material = SubResource( 10 )
+process_material = SubResource( 7 )
 texture = ExtResource( 3 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]

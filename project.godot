@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemy.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/Player.gd"
@@ -19,12 +24,13 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/Spell.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "Tome",
 "language": "GDScript",
 "path": "res://Tome.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "Player": "",
 "Spell": "",
 "Tome": ""
@@ -64,6 +70,16 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+wav={
+"compress/mode": 0,
+"edit/loop": false,
+"edit/normalize": true,
+"edit/trim": false,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": false
 }
 
 [input]

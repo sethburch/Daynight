@@ -149,14 +149,6 @@ func _physics_process(delta):
 	else:
 		if friction:
 			motion.x = lerp(motion.x, 0, AIR_FRICTION)
-			
-	#cast fireball
-#	if Input.is_action_just_pressed("cast"):
-#		var spell = SPELL.instance()
-#		get_node("..").add_child(spell)
-#		spell.set_position($Cast.get_position()+self.get_position())
-#		spell.dir = Vector2(player_dir, 0)
-#		spell._beam()
 
 func _process(delta):
 	#play animation
@@ -164,6 +156,15 @@ func _process(delta):
 		anim = new_anim
 		$Sprite.play(anim)
 	$Sprite.flip_h = !facing_right
+	
+	#cast a spell based on current tome in inventory
+	if $Inventory.current_tome != null:
+		if Input.is_action_just_pressed("cast"):
+			var this_spell = $Inventory.current_tome.current_school.instance()
+			this_spell.move = $Inventory.current_tome.current_movement
+			this_spell.position = $Cast.position + position
+			this_spell.dir = Vector2(player_dir, 0)
+			get_node("..").add_child(this_spell)
 	
 	#set cast position (ghetto but works)
 	if player_dir == -1 and sign($Cast.position.x) == 1:
@@ -182,6 +183,3 @@ func dust_particle():
 	dust_particle.set_position(self.get_position())
 	dust_particle.position.y += 16
 	dust_particle.position.x -= 2
-	
-func get_cast_position() -> Vector2:
-	return $Cast.position + position
