@@ -171,7 +171,6 @@ func _process(delta):
 		$Cast.position.x *= -1
 	if player_dir ==  1 and sign($Cast.position.x) == -1:
 		$Cast.position.x = abs($Cast.position.x)
-		
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":

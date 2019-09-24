@@ -17,7 +17,6 @@ func _ready():
 	current_school = school[randi() % school.size()]
 	current_movement = randi() % MOVEMENT.size()
 	tome_name = current_school.instance().spell_name + " Tome of " + move_names[current_movement]
-	print_debug(tome_name)
 
 #func _process(delta):
 #	if Input.is_action_just_pressed("cast"):
