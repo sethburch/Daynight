@@ -12,9 +12,9 @@ export(int) var health = 3
 var hit_time = 0
 const HIT_TIME = 15
 
-func damage(knockback_dir):
+func damage(damage, knockback_dir):
 	motion += knockback_dir * KNOCKBACK_AMOUNT
-	health -= 1
+	health -= damage
 	hit_time = 0
 	part_angle = knockback_dir.angle()
 	modulate = Color(1, 0, 0, 1)

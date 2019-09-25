@@ -2,20 +2,20 @@ extends Area2D
 class_name Spell
 
 const UP = Vector2(0, -1)
-const EXPLOSION_PART = preload("res://FireExplodePart.tscn")
 
 enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, RAIL}
 
 var MAX_BOUNCE = 3
 var dir := Vector2(0, 0)
+
 export var MAX_FALL_SPEED = 0
 export var GRAVITY = 0
 export var ACCELERATION = 0
 export var MAX_SPEED = 0
-export var SPEED = 0
+export var SPEED = 5
 export var TRAVEL_TIME = 5
 export var DESTROY_TIME = 2
-
+export var DAMAGE = 1
 export var SIZE = 1
 
 var move = 0
@@ -26,8 +26,9 @@ var needs_physics = true
 var times_bounced = 0
 var collision = null
 
-var shoot_sound = preload("../sound/fireball_shoot.wav")
-var hit_sound = preload("../sound/fireball_hit.wav")
+export(Resource) var shoot_sound = preload("../sound/fireball_shoot.wav")
+export(Resource) var hit_sound = preload("../sound/fireball_hit.wav")
+export(Resource) var explosion_particle = preload("res://FireExplodePart.tscn")
 
 func _ready():
 	_initial_cast()
@@ -40,6 +41,7 @@ func _ready():
 	travel_time.start()
 	scale = Vector2(SIZE, SIZE)
 
+#when the spell is first cast (executed once)
 func _initial_cast():
 	$Sound.stream = shoot_sound
 	$Sound.pitch_scale = rand_range(0.9, 1.1)
@@ -109,7 +111,7 @@ func _spell_finish():
 	get_node("..").screen_shake(.2, 15, 8)
 	$Particles/Inner.emitting = false
 	$Particles/Outer.emitting = false
-	var explosion = EXPLOSION_PART.instance()
+	var explosion = explosion_particle.instance()
 	add_child(explosion)
 	explosion.emitting = true
 	spell_done = true
@@ -124,7 +126,7 @@ func _on_Spell_body_entered(body):
 	if body.is_in_group("Player"):
 		return
 	if body is Enemy:
-		body.damage(velocity)
+		body.damage(DAMAGE, velocity)
 	if can_bounce and times_bounced < MAX_BOUNCE:
 		$Sound.stream = shoot_sound
 		$Sound.pitch_scale = rand_range(0.9, 1.1)

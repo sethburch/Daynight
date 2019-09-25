@@ -16,7 +16,7 @@ const MAX_DASH_SPEED = 1500
 const AIR_FRICTION = 0.05
 const GROUND_FRICTION = .3
 const JUMP_FALLOFF_SPEED = .5
-const JUMP_BUFFER = 8
+const JUMP_BUFFER_MAX = 6
 
 var motion = Vector2()
 var friction = false
@@ -24,10 +24,9 @@ var friction = false
 var anim = ""
 var new_anim = ""
 var facing_right = true
-var falling = false
 var coyote_jump_buffer = 0
 var jump_buffer = 0
-var jump_release_buffer = 0
+var has_jumped = false
 
 var haxis = 1
 var vaxis = 0
@@ -60,46 +59,44 @@ func _physics_process(delta):
 		dust_particle()
 		new_anim = "squash"
 
-	#coyote jump buffer
+	#jumping with buffer
 	if is_on_floor():
-		coyote_jump_buffer = JUMP_BUFFER
-	if coyote_jump_buffer > 0:
-		coyote_jump_buffer-=1
-		
-	#ground jump buffer
-	if Input.is_action_just_pressed("jump") and jump_buffer == 0:
-		jump_buffer = JUMP_BUFFER
-	if jump_buffer > 0:
-		jump_buffer-=1
-		
-	#ground jump release buffer
-	if Input.is_action_just_released("jump") and jump_release_buffer == 0:
-		jump_release_buffer = JUMP_BUFFER
-	if jump_release_buffer > 0:
-		jump_release_buffer-=1
-		
-	#if we're on the floor and press jump, then jump (includes buffer)
-	if (is_on_floor() or coyote_jump_buffer > 0) and (Input.is_action_just_pressed("jump") or jump_buffer > 0):
 		coyote_jump_buffer = 0
+		if !has_jumped and jump_buffer < JUMP_BUFFER_MAX:
+			jump_buffer = JUMP_BUFFER_MAX
+			has_jumped = true
+			motion.y = -JUMP_SPEED
+			new_anim = "jump_inital"
+			dust_particle()
+	jump_buffer+=1
+		
+	#jumping with coyote time
+	if Input.is_action_just_pressed("jump"):
 		jump_buffer = 0
-		motion.y = -JUMP_SPEED
-		new_anim = "jump_inital"
-		dust_particle()
+		if !has_jumped and coyote_jump_buffer < JUMP_BUFFER_MAX:
+			coyote_jump_buffer = JUMP_BUFFER_MAX
+			has_jumped = true
+			motion.y = -JUMP_SPEED
+			new_anim = "jump_inital"
+			dust_particle()
+	coyote_jump_buffer+=1
+
+	#if we release the jump key while rising then cut off the jump
+	if Input.is_action_just_released("jump"):
+		has_jumped = false
+		#if we're falling
+		if motion.y < 0:
+			motion.y = lerp(motion.y, 0, JUMP_FALLOFF_SPEED)
+			new_anim = "jump_peak"
+
 	#play jump animations
-	elif !is_on_floor():
+	if !is_on_floor():
 		if motion.y > -100 and motion.y < 100:
 			new_anim = "jump_peak"
 		elif motion.y < 0 and motion.y > -JUMP_SPEED+100:
 			new_anim = "jump_rise"
 		elif motion.y > 0:
 			new_anim = "jump_fall"
-			falling = true
-	
-	#if we release the jump key while rising then cut off the jump
-	if (Input.is_action_just_released("jump") or jump_release_buffer > 0) and motion.y < 0:
-		jump_release_buffer = 0
-		motion.y = lerp(motion.y, 0, JUMP_FALLOFF_SPEED)
-		new_anim = "jump_peak"
 			
 	#movement on ground
 	if is_on_floor():
