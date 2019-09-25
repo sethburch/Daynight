@@ -4,6 +4,7 @@ class_name Spell
 const UP = Vector2(0, -1)
 
 enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, RAIL}
+enum SCHOOL {FIRE, ICE}
 
 var MAX_BOUNCE = 3
 var dir := Vector2(0, 0)
@@ -25,6 +26,8 @@ var can_bounce = false
 var needs_physics = true
 var times_bounced = 0
 var collision = null
+
+var type = SCHOOL.FIRE
 
 export(Resource) var shoot_sound = preload("../sound/fireball_shoot.wav")
 export(Resource) var hit_sound = preload("../sound/fireball_hit.wav")
@@ -78,7 +81,7 @@ func _physics_process(delta):
 		MOVEMENT.ROCKET:
 			velocity.y = sin(((2*3.14)/120) * position.x) * SPEED
 			velocity.x = dir.x * SPEED
-
+			
 	if needs_physics:
 		position += velocity
 
@@ -126,7 +129,7 @@ func _on_Spell_body_entered(body):
 	if body.is_in_group("Player"):
 		return
 	if body is Enemy:
-		body.damage(DAMAGE, velocity)
+		body.damage(DAMAGE, velocity, type)
 	if can_bounce and times_bounced < MAX_BOUNCE:
 		$Sound.stream = shoot_sound
 		$Sound.pitch_scale = rand_range(0.9, 1.1)

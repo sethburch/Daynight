@@ -13,6 +13,10 @@ onready var home = get_position()
 onready var player = get_node("../Player")
 onready var detectionRadius = get_node("PlayerDetect")
 
+func _ready():
+	damage_modifier[SCHOOL.FIRE] = MODIFIER_RESIST
+	damage_modifier[SCHOOL.ICE] =  MODIFIER_WEAK
+
 func _physics_process(delta):
 	if detectionRadius.overlaps_body(player):
 		target = player.get_position()

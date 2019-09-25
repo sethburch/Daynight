@@ -1,8 +1,14 @@
 extends KinematicBody2D
 class_name Enemy
 
+enum SCHOOL {FIRE, ICE}
+var damage_modifier = [1, 1]
+
 var death_particle = preload("../DeathParticle.tscn")
 var death_sound = preload("../sound/death_sound.wav")
+
+const MODIFIER_WEAK = 1.75
+const MODIFIER_RESIST = 0.25
 
 var part_angle = 0
 var motion = Vector2(0, 0)
@@ -12,9 +18,9 @@ export(int) var health = 3
 var hit_time = 0
 const HIT_TIME = 15
 
-func damage(damage, knockback_dir):
+func damage(damage, knockback_dir, spell):
 	motion += knockback_dir * KNOCKBACK_AMOUNT
-	health -= damage
+	health -= damage * damage_modifier[spell]
 	hit_time = 0
 	part_angle = knockback_dir.angle()
 	modulate = Color(1, 0, 0, 1)
