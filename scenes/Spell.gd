@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 class_name Spell
 
 const UP = Vector2(0, -1)
@@ -40,6 +40,16 @@ func _ready():
 	travel_time.wait_time = TRAVEL_TIME
 	travel_time.start()
 	scale = Vector2(SIZE, SIZE)
+	
+	collision = move_and_collide(Vector2(0,0))
+	var failsafeTimer = 10
+	if (collision && can_bounce):
+		position.x -= 16 * dir.x
+	while (collision && failsafeTimer >= 0):
+		if !collision.get_collider().is_in_group("Player"):
+			position += collision.normal
+		collision = move_and_collide(Vector2(0,0))
+		failsafeTimer -= 1
 
 #when the spell is first cast (executed once)
 func _initial_cast():
@@ -61,7 +71,7 @@ func _initial_cast():
 		MOVEMENT.MISSILE:
 			needs_physics = false
 		MOVEMENT.ROCKET:
-			pass
+			position.y -= 20
 	
 func _physics_process(delta):
 	match move:
@@ -80,7 +90,9 @@ func _physics_process(delta):
 			velocity.x = dir.x * SPEED
 
 	if needs_physics:
-		position += velocity
+		collision = move_and_collide(velocity)
+		if collision:
+			_on_Spell_body_entered(collision)
 
 func _on_travel_time_timeout():
 	#the spell has travelled for too long
@@ -118,7 +130,8 @@ func _spell_finish():
 	$CollisionShape2D.disabled = true
 	_start_destroy()
 
-func _on_Spell_body_entered(body):
+func _on_Spell_body_entered(col):
+	var body = col.get_collider()
 	if spell_done:
 		return
 	if body.is_a_parent_of(self):
@@ -132,7 +145,7 @@ func _on_Spell_body_entered(body):
 		$Sound.pitch_scale = rand_range(0.9, 1.1)
 		$Sound.play()
 		times_bounced+=1
-		velocity = -velocity
+		velocity = velocity.bounce(col.normal)
 		return
 	#the spell has hit a wall or enemy
 	if !spell_done:

@@ -36,7 +36,7 @@ animations = [ {
 extents = Vector2( 8.5, 8 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 100.0
+radius = 180.0
 
 [node name="Fire Skull" type="KinematicBody2D"]
 collision_layer = 3
@@ -51,7 +51,6 @@ health = 2
 use_parent_material = true
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 3
 playing = true
 script = ExtResource( 6 )
 

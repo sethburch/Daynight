@@ -45,7 +45,7 @@ scale = 2.0
 scale_curve = SubResource( 4 )
 color = Color( 0.819608, 0.25098, 0.121569, 1 )
 
-[node name="Spell" type="Area2D"]
+[node name="Spell" type="KinematicBody2D"]
 z_index = 1
 collision_layer = 2
 collision_mask = 0
@@ -75,4 +75,3 @@ process_material = SubResource( 7 )
 texture = ExtResource( 3 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
-[connection signal="body_entered" from="." to="." method="_on_Spell_body_entered"]

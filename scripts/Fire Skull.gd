@@ -1,7 +1,7 @@
 extends Enemy
 
-const MAX_SPEED = 3
-const ACCEL = 0.1
+const MAX_SPEED = 150
+const ACCEL = 5
 #var motion = Vector2(0, 0)
 var wanderTimer = 0
 var attackTimer = 60
@@ -16,7 +16,7 @@ onready var detectionRadius = get_node("PlayerDetect")
 func _physics_process(delta):
 	if detectionRadius.overlaps_body(player):
 		target = player.get_position()
-		if position.distance_to(player.get_position()) > 200:
+		if position.distance_to(player.get_position()) > 150:
 			chase()
 		else:
 			if target.x < global_position.x:
@@ -40,10 +40,10 @@ func _physics_process(delta):
 	
 	motion = motion.clamped(MAX_SPEED)
 	
-	collision = move_and_collide(motion)
+	collision = move_and_collide(motion*delta)
 	
 	if collision:
-		motion = motion * collision.normal * 2
+		motion = motion.bounce(collision.normal) * 2
 
 func chase():
 	if target.x < global_position.x:

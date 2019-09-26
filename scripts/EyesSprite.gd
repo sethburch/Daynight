@@ -28,5 +28,5 @@ func _process(delta):
 		set_flip_h(true)
 	else:
 		set_animation("Idle")
-	if slime.waitTimer < 20:
+	if slime.anim == "Prejump":
 		set_animation("Prejump")
