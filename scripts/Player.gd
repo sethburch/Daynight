@@ -18,6 +18,9 @@ const GROUND_FRICTION = .3
 const JUMP_FALLOFF_SPEED = .5
 const JUMP_BUFFER_MAX = 6
 
+export(int) var MAX_HEALTH = 3
+var health = MAX_HEALTH
+
 var motion = Vector2()
 var friction = false
 
@@ -161,6 +164,7 @@ func _process(delta):
 			this_spell.move = $Inventory.current_tome.current_movement
 			this_spell.position = $Cast.position + position
 			this_spell.dir = Vector2(player_dir, 0)
+			this_spell.spell_owner = self
 			get_node("..").add_child(this_spell)
 	
 	#set cast position (ghetto but works)
@@ -168,6 +172,10 @@ func _process(delta):
 		$Cast.position.x *= -1
 	if player_dir ==  1 and sign($Cast.position.x) == -1:
 		$Cast.position.x = abs($Cast.position.x)
+		
+	#kill player
+	if health <= 0:
+		get_tree().reload_current_scene()
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":
@@ -179,3 +187,8 @@ func dust_particle():
 	dust_particle.set_position(self.get_position())
 	dust_particle.position.y += 16
 	dust_particle.position.x -= 2
+	
+func damage(damage, knockback_dir):
+	print_debug("hurt player")
+	health -= damage
+	motion += knockback_dir * 50

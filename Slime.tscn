@@ -90,7 +90,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "Prejump",
+"name": "LookUp",
 "speed": 0.0
 } ]
 
