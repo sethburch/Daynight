@@ -1,6 +1,7 @@
 extends Spell
 
 var spell_name = "Blazing"
+var spell_color = Color("#ff6157")
 
 func _ready():
 	._ready()

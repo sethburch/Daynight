@@ -56,10 +56,10 @@ __meta__ = {
 [node name="WorldSound" type="AudioStreamPlayer" parent="."]
 
 [node name="Tome3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 871.533, 375.39 )
+position = Vector2( 871.533, 363.918 )
 
 [node name="Tome2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 826.044, 376.312 )
+position = Vector2( 826.044, 363.765 )
 
 [node name="Tome" parent="." instance=ExtResource( 6 )]
-position = Vector2( 782.807, 374.303 )
+position = Vector2( 782.449, 363.548 )

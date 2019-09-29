@@ -6,12 +6,12 @@
 [ext_resource path="res://sound/ice_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://IceExplodePart.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.488889, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [sub_resource type="SpatialMaterial" id=3]
 flags_unshaded = true
@@ -28,7 +28,7 @@ _data = [ Vector2( 0, 0.8157 ), 0.0, 0.0, 0, 0, Vector2( 0.0413116, 0.8685 ), 4.
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=6]
 next_pass = SubResource( 3 )
 emission_shape = 1
 emission_sphere_radius = 7.42
@@ -43,16 +43,16 @@ angle = 360.0
 angle_random = 1.0
 scale = 3.0
 scale_curve = SubResource( 5 )
-color_ramp = SubResource( 17 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Gradient" id=13]
+[sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.240741, 0.537037, 1 )
 colors = PoolColorArray( 0.466667, 0.839216, 0.756863, 1, 0.109804, 0.572549, 0.654902, 1, 0.109804, 0.572549, 0.654902, 1, 0.109804, 0.572549, 0.654902, 0 )
 
-[sub_resource type="GradientTexture" id=14]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=9]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -61,20 +61,20 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0.8157 ), 0.0, 0.0, 0, 0, Vector2( 0.0413116, 0.8685 ), 4.66189, 4.66189, 0, 0, Vector2( 0.168439, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=12]
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=12]
-next_pass = SubResource( 7 )
-trail_color_modifier = SubResource( 11 )
+[sub_resource type="ParticlesMaterial" id=14]
+next_pass = SubResource( 9 )
+trail_color_modifier = SubResource( 13 )
 emission_shape = 1
 emission_sphere_radius = 13.49
 flag_disable_z = true
@@ -87,8 +87,8 @@ linear_accel = 4.0
 angle = 360.0
 angle_random = 1.0
 scale = 2.0
-scale_curve = SubResource( 9 )
-color_ramp = SubResource( 14 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 8 )
 
 [node name="SpellIce" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -96,7 +96,6 @@ MAX_FALL_SPEED = 5
 GRAVITY = 1
 ACCELERATION = 5
 MAX_SPEED = 400
-SPEED = 5
 shoot_sound = ExtResource( 3 )
 hit_sound = ExtResource( 4 )
 explosion_particle = ExtResource( 5 )
@@ -106,7 +105,7 @@ visible = false
 
 [node name="Inner" parent="Particles" index="0"]
 position = Vector2( 0, -5 )
-process_material = SubResource( 15 )
+process_material = SubResource( 6 )
 
 [node name="Outer" parent="Particles" index="1"]
-process_material = SubResource( 12 )
+process_material = SubResource( 14 )
