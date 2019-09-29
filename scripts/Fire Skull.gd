@@ -4,7 +4,7 @@ const MAX_SPEED = 150
 const ACCEL = 5
 #var motion = Vector2(0, 0)
 var wanderTimer = 0
-var attackTimer = 10
+var attackTimer = 60
 var target = Vector2()
 var rng = RandomNumberGenerator.new()
 var collision = KinematicCollision2D.new()
@@ -35,14 +35,14 @@ func _physics_process(delta):
 		if attackTimer < 0:
 			print_debug("test")
 			attack()
-			attackTimer = rng.randi_range(10, 20)
+			attackTimer = rng.randi_range(60, 120)
 		attackTimer -= 1
 	elif wanderTimer < 0:
 		wander()
 		chase()
 		wanderTimer = rng.randi_range(0, 60)
 	else:
-		attackTimer = rng.randi_range(10,20)
+		attackTimer = rng.randi_range(60, 120)
 		wanderTimer -= 1
 		chase()
 	
@@ -79,10 +79,9 @@ func wander():
 		target.y = home.y - 200
 		
 func attack():
-	print_debug("test")
 	var this_spell = fire_spell.instance()
 	this_spell.move = MOVEMENT.BEAM
-	this_spell.position = position
 	this_spell.dir = Vector2(sign(player.position.x - position.x), 0)
+	this_spell.position = position + (this_spell.dir*20)
 	this_spell.spell_owner = self
 	get_node("..").add_child(this_spell)
