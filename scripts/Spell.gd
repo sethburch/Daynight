@@ -3,7 +3,7 @@ class_name Spell
 
 const UP = Vector2(0, -1)
 
-enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, RAIL}
+enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET}
 enum SCHOOL {FIRE, ICE}
 
 var MAX_BOUNCE = 3
@@ -32,7 +32,7 @@ var type = SCHOOL.FIRE
 
 export(Resource) var shoot_sound = preload("../sound/fireball_shoot.wav")
 export(Resource) var hit_sound = preload("../sound/fireball_hit.wav")
-export(Resource) var explosion_particle = preload("res://FireExplodePart.tscn")
+export(Resource) var explosion_particle = preload("../scenes/FireExplodePart.tscn")
 
 func _ready():
 	_initial_cast()

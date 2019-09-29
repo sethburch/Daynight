@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://World.gd" type="Script" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Slime.tscn" type="PackedScene" id=3]
-[ext_resource path="res://FireSkull.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Slime.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/FireSkull.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/placeholder_tile.png" type="Texture" id=5]
-[ext_resource path="res://Tome.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Tome.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )

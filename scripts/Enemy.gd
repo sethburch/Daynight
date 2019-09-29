@@ -1,11 +1,11 @@
 extends KinematicBody2D
 class_name Enemy
 
-enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, RAIL}
+enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET}
 enum SCHOOL {FIRE, ICE}
 var damage_modifier = [1, 1]
 
-var death_particle = preload("../DeathParticle.tscn")
+var death_particle = preload("../scenes/DeathParticle.tscn")
 var death_sound = preload("../sound/death_sound.wav")
 
 const MODIFIER_WEAK = 1.75

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://scripts/Enemy.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Spell",
 "language": "GDScript",
-"path": "res://scenes/Spell.gd"
+"path": "res://scripts/Spell.gd"
 }, {
 "base": "Area2D",
 "class": "Tome",
 "language": "GDScript",
-"path": "res://Tome.gd"
+"path": "res://scripts/Tome.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
@@ -39,13 +39,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Daynight"
-run/main_scene="res://World.tscn"
+run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=1280
+window/size/height=720
 window/size/test_width=1280
 window/size/test_height=720
 
