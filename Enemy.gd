@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Enemy
 
+enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, RAIL}
 enum SCHOOL {FIRE, ICE}
 var damage_modifier = [1, 1]
 
@@ -17,6 +18,9 @@ export(int) var health = 3
 
 var hit_time = 0
 const HIT_TIME = 15
+
+func _ready():
+	add_to_group("Enemy")
 
 func damage(damage, knockback_dir, spell):
 	motion += knockback_dir * KNOCKBACK_AMOUNT

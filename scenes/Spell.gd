@@ -26,6 +26,7 @@ var can_bounce = false
 var needs_physics = true
 var times_bounced = 0
 var collision = null
+var spell_owner
 
 var type = SCHOOL.FIRE
 
@@ -124,12 +125,16 @@ func _spell_finish():
 func _on_Spell_body_entered(body):
 	if spell_done:
 		return
-	if body.is_a_parent_of(self):
+
+	if body == spell_owner:
 		return
+
 	if body.is_in_group("Player"):
-		return
-	if body is Enemy:
+		body.damage(DAMAGE, velocity)
+		
+	if body.is_in_group("Enemy"):
 		body.damage(DAMAGE, velocity, type)
+			
 	if can_bounce and times_bounced < MAX_BOUNCE:
 		$Sound.stream = shoot_sound
 		$Sound.pitch_scale = rand_range(0.9, 1.1)
