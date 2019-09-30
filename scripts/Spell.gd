@@ -73,7 +73,7 @@ func _initial_cast():
 			TRAVEL_TIME = 0.1
 			SIZE = SIZE*1.5
 		MOVEMENT.MISSILE:
-			needs_physics = false
+			pass
 		MOVEMENT.ROCKET:
 			position.y -= 20
 	
@@ -95,8 +95,8 @@ func _physics_process(delta):
 			
 	if needs_physics:
 		collision = move_and_collide(velocity)
-		if collision:
-			_on_Spell_body_entered(collision)
+		if collision and can_bounce:
+			_bounce(collision)
 
 func _on_travel_time_timeout():
 	#the spell has travelled for too long
@@ -134,8 +134,16 @@ func _spell_finish():
 	$CollisionShape2D.disabled = true
 	_start_destroy()
 
-func _on_Spell_body_entered(col):
-	var body = col.get_collider()
+func _bounce(col):
+	if can_bounce and times_bounced < MAX_BOUNCE:
+		$Sound.stream = shoot_sound
+		$Sound.pitch_scale = rand_range(0.9, 1.1)
+		$Sound.play()
+		times_bounced+=1
+		velocity = velocity.bounce(col.normal)
+		return
+		
+func _on_Hitbox_body_entered(body):
 	if spell_done:
 		return
 
@@ -147,14 +155,10 @@ func _on_Spell_body_entered(col):
 		
 	if body.is_in_group("Enemy"):
 		body.damage(DAMAGE, velocity, type)
-			
+
 	if can_bounce and times_bounced < MAX_BOUNCE:
-		$Sound.stream = shoot_sound
-		$Sound.pitch_scale = rand_range(0.9, 1.1)
-		$Sound.play()
-		times_bounced+=1
-		velocity = velocity.bounce(col.normal)
 		return
+
 	#the spell has hit a wall or enemy
 	if !spell_done:
 		_spell_finish()

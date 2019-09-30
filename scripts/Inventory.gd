@@ -25,12 +25,13 @@ func _process(delta):
 		inventory_index+=1
 		if inventory_index > inventory.size()-1:
 			inventory_index = 0
-		current_tome = inventory[inventory_index]
-		get_node("..").get_node("GUILayer/GUI").set_aura_visible(true)
-		#set the tome texture and aura color on our GUI
-		get_node("..").get_node("GUILayer/GUI").set_current_tome(current_tome.this_tome_sprite, current_tome.this_tome_color)
-		#show our current tome text
-		get_node("..").get_node("GUILayer/GUI").set_item_text(current_tome.tome_name)
+		if inventory.size() != 0:
+			current_tome = inventory[inventory_index]
+			get_node("..").get_node("GUILayer/GUI").set_aura_visible(true)
+			#set the tome texture and aura color on our GUI
+			get_node("..").get_node("GUILayer/GUI").set_current_tome(current_tome.this_tome_sprite, current_tome.this_tome_color)
+			#show our current tome text
+			get_node("..").get_node("GUILayer/GUI").set_item_text(current_tome.tome_name)
 		
 	#when we first pick up a tome
 	if inventory.size() == 1:

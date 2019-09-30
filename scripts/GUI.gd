@@ -1,14 +1,14 @@
 extends Control
 
-func _ready():
-	pass
-	
 func set_alert_text(text):
 	$Alert/AnimationPlayer.stop()
 	$Alert/AnimationPlayer.play("alert_fade")
 	$Alert.text = text
 	
 func set_item_text(text):
+	#$Pickup/Tween.stop_all()
+	#$Pickup/Tween.interpolate_property($Pickup, "rect_position", $Pickup.rect_position, Vector2($Pickup.rect_position.x, $Pickup.rect_position.y-65), 0.2, Tween.TRANS_BACK, Tween.EASE_IN, 0.0)
+	#$Pickup/Tween.start()
 	$Pickup/AnimationPlayer.stop()
 	$Pickup/AnimationPlayer.play("pickup_fade")
 	$Pickup.text = text
