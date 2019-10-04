@@ -5,8 +5,5 @@
 
 [node name="SpellFire" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MAX_FALL_SPEED = 10
-GRAVITY = 1
-ACCELERATION = 10
 MAX_SPEED = 400
 TRAVEL_TIME = 2

@@ -53,6 +53,7 @@ z_index = 1
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )
+DAMAGE = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -78,6 +79,7 @@ process_material = SubResource( 7 )
 texture = ExtResource( 3 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 
 [node name="Hitbox" type="Area2D" parent="."]
 

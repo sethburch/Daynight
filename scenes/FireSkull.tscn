@@ -45,12 +45,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-health = 2
 
 [node name="FireSprite" type="AnimatedSprite" parent="."]
 use_parent_material = true
 frames = SubResource( 1 )
 animation = "Idle"
+frame = 2
 playing = true
 script = ExtResource( 6 )
 

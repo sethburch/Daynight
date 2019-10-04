@@ -3,6 +3,7 @@ class_name Player
 
 const DUST_PARTICLE = preload("../scenes/DustParticle.tscn")
 const SPELL = preload("../scenes/Spell.tscn")
+var damage_num = preload("../scenes/DamageNum.tscn")
 
 const UP = Vector2(0, -1)
 const GRAVITY = Vector2(0, 900)
@@ -18,7 +19,7 @@ const GROUND_FRICTION = .3
 const JUMP_FALLOFF_SPEED = .5
 const JUMP_BUFFER_MAX = 6
 
-export(int) var MAX_HEALTH = 3
+export(int) var MAX_HEALTH = 100
 var health = MAX_HEALTH
 
 var motion = Vector2()
@@ -34,6 +35,12 @@ var has_jumped = false
 var haxis = 1
 var vaxis = 0
 var player_dir = haxis
+
+var hit_time = 0
+export(int) var i_frames = 60
+
+export(int) var CAST_SPEED = 60
+var cast_timer = 0
 
 func _ready():
 	add_to_group("Player")
@@ -156,16 +163,6 @@ func _process(delta):
 		$Sprite.play(anim)
 	$Sprite.flip_h = !facing_right
 	
-	#cast a spell based on current tome in inventory
-	if $Inventory.current_tome != null:
-		if Input.is_action_just_pressed("cast"):
-			var this_spell = $Inventory.current_tome.current_school.instance()
-			this_spell.move = $Inventory.current_tome.current_movement
-			this_spell.position = $Cast.position + position
-			this_spell.dir = Vector2(player_dir, 0)
-			this_spell.spell_owner = self
-			get_node("..").add_child(this_spell)
-	
 	#set cast position (ghetto but works)
 	if player_dir == -1 and sign($Cast.position.x) == 1:
 		$Cast.position.x *= -1
@@ -175,6 +172,27 @@ func _process(delta):
 	#kill player
 	if health <= 0:
 		get_tree().reload_current_scene()
+		
+	if hit_time >= 0:
+		hit_time+=1
+		if hit_time > i_frames:
+			modulate = Color(1, 1, 1, 1)
+			hit_time = -1
+		
+	cast_timer+=1
+	if cast_timer < CAST_SPEED:
+		return
+	#cast a spell based on current tome in inventory
+	if $Inventory.current_tome != null:
+		if Input.is_action_just_pressed("cast"):
+			cast_timer = 0
+			var this_spell = $Inventory.current_tome.current_school.instance()
+			this_spell.move = $Inventory.current_tome.current_movement
+			this_spell.position = $Cast.position + position
+			this_spell.dir = (get_global_mouse_position() - position).normalized()
+			#this_spell.dir = Vector2(player_dir, 0)
+			this_spell.spell_owner = self
+			get_node("..").add_child(this_spell)
 
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":
@@ -188,6 +206,29 @@ func dust_particle():
 	dust_particle.position.x -= 2
 	
 func damage(damage, knockback_dir):
-	print_debug("hurt player")
-	health -= damage
-	motion += knockback_dir * 50
+	if hit_time < i_frames and hit_time >= 0:
+		return
+	hit_time = 0
+	motion = Vector2(0, 0)
+	motion += knockback_dir * 100
+	modulate = Color(1, 0, 0, 1)
+	
+	get_tree().paused = true
+	yield(get_tree().create_timer(0.1), 'timeout')
+	get_tree().paused = false
+	
+	#calculate damage including resistances/weaknesses
+	var damage_calculation = round(damage)
+	
+	#take damage
+	health -= damage_calculation
+	
+	#update health bar
+	$GUILayer/GUI.set_health(health, MAX_HEALTH)
+	
+	#create damage number. places it into world root so it doesnt stick to the enemy's local position
+	var _damage_num = damage_num.instance()
+	_damage_num.rect_position = position
+	_damage_num.text = str(damage_calculation)
+	_damage_num.hit = self
+	get_parent().add_child(_damage_num)

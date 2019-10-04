@@ -7,6 +7,7 @@ var damage_modifier = [1, 1]
 
 var death_particle = preload("../scenes/DeathParticle.tscn")
 var death_sound = preload("../sound/death_sound.wav")
+var damage_num = preload("../scenes/DamageNum.tscn")
 
 const MODIFIER_WEAK = 1.75
 const MODIFIER_RESIST = 0.25
@@ -14,7 +15,7 @@ const MODIFIER_RESIST = 0.25
 var part_angle = 0
 var motion = Vector2(0, 0)
 export(float) var KNOCKBACK_AMOUNT = 100
-export(int) var health = 3
+export(int) var health = 100
 
 var hit_time = 0
 const HIT_TIME = 15
@@ -23,8 +24,20 @@ func _ready():
 	add_to_group("Enemy")
 
 func damage(damage, knockback_dir, spell):
+	#do knockback
 	motion += knockback_dir * KNOCKBACK_AMOUNT
-	health -= damage * damage_modifier[spell]
+	#calculate damage including resistances/weaknesses
+	var damage_calculation = round(damage * damage_modifier[spell])
+	
+	#create damage number. places it into world root so it doesnt stick to the enemy's local position
+	var _damage_num = damage_num.instance()
+	_damage_num.rect_position = position
+	_damage_num.text = str(damage_calculation)
+	_damage_num.hit = self
+	get_parent().add_child(_damage_num)
+	
+	#do damage and create particles
+	health -= damage_calculation
 	hit_time = 0
 	part_angle = knockback_dir.angle()
 	modulate = Color(1, 0, 0, 1)

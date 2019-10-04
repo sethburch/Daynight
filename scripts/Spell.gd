@@ -9,15 +9,13 @@ enum SCHOOL {FIRE, ICE}
 var MAX_BOUNCE = 3
 var dir := Vector2(0, 0)
 
-export var MAX_FALL_SPEED = 0
-export var GRAVITY = 0
-export var ACCELERATION = 0
-export var MAX_SPEED = 0
+export var MAX_SPEED = 10
 export var SPEED = 5
 export var TRAVEL_TIME = 5
 export var DESTROY_TIME = 2
-export var DAMAGE = 1
+export var DAMAGE = 20
 export var SIZE = 1
+export var CAST_SPEED = 60
 
 var move = 0
 var velocity := Vector2(0, 0)
@@ -75,7 +73,7 @@ func _initial_cast():
 		MOVEMENT.MISSILE:
 			pass
 		MOVEMENT.ROCKET:
-			position.y -= 20
+			pass
 	
 func _physics_process(delta):
 	match move:
@@ -86,9 +84,11 @@ func _physics_process(delta):
 		MOVEMENT.BOUNCE:
 			velocity += Vector2(0, .5)
 		MOVEMENT.BURST:
+			velocity = dir
 			pass
 		MOVEMENT.MISSILE:
-			position = get_global_mouse_position()
+			velocity = (get_global_mouse_position() - position).normalized() * SPEED
+			pass
 		MOVEMENT.ROCKET:
 			velocity.y = sin(((2*3.14)/120) * position.x) * SPEED
 			velocity.x = dir.x * SPEED
@@ -97,6 +97,8 @@ func _physics_process(delta):
 		collision = move_and_collide(velocity)
 		if collision and can_bounce:
 			_bounce(collision)
+		if collision:
+			_on_Spell_body_entered(collision)
 
 func _on_travel_time_timeout():
 	#the spell has travelled for too long
@@ -135,19 +137,35 @@ func _spell_finish():
 	_start_destroy()
 
 func _bounce(col):
+	if !can_bounce:
+		return
+	if times_bounced >= MAX_BOUNCE:
+		return
+	$Sound.stream = shoot_sound
+	$Sound.pitch_scale = rand_range(0.9, 1.1)
+	$Sound.play()
+	times_bounced+=1
+	velocity = velocity.bounce(col.normal)
+
+#for detecting collisions with walls
+func _on_Spell_body_entered(collision):
+	var body = collision.get_collider()
+		
 	if can_bounce and times_bounced < MAX_BOUNCE:
-		$Sound.stream = shoot_sound
-		$Sound.pitch_scale = rand_range(0.9, 1.1)
-		$Sound.play()
-		times_bounced+=1
-		velocity = velocity.bounce(col.normal)
 		return
 		
+	if body is TileMap:
+		_spell_finish()
+
+#for detecting collisions with things other than walls and doing damage
 func _on_Hitbox_body_entered(body):
 	if spell_done:
 		return
 
 	if body == spell_owner:
+		return
+		
+	if body is TileMap:
 		return
 
 	if body.is_in_group("Player"):
@@ -155,9 +173,7 @@ func _on_Hitbox_body_entered(body):
 		
 	if body.is_in_group("Enemy"):
 		body.damage(DAMAGE, velocity, type)
-
-	if can_bounce and times_bounced < MAX_BOUNCE:
-		return
+		times_bounced = MAX_BOUNCE
 
 	#the spell has hit a wall or enemy
 	if !spell_done:

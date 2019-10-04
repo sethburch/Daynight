@@ -92,10 +92,9 @@ color_ramp = SubResource( 8 )
 
 [node name="SpellIce" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MAX_FALL_SPEED = 5
-GRAVITY = 1
-ACCELERATION = 5
 MAX_SPEED = 400
+SPEED = 4
+DAMAGE = 20
 shoot_sound = ExtResource( 3 )
 hit_sound = ExtResource( 4 )
 explosion_particle = ExtResource( 5 )

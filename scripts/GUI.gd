@@ -19,3 +19,7 @@ func set_current_tome(tome_texture, aura_color):
 
 func set_aura_visible(visibility):
 	$CurrentAura.visible = visibility
+	
+func set_health(health, max_health):
+	$Health.value = health
+	$HealthText.text = str(health) + "/" + str(max_health);

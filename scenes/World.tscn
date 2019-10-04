@@ -38,7 +38,7 @@ position = Vector2( 650.709, 331.221 )
 position = Vector2( 189.073, 465.316 )
 
 [node name="Fire Skull" parent="." instance=ExtResource( 4 )]
-position = Vector2( 757.2, 319.282 )
+position = Vector2( 1242.8, 307.703 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -54,6 +54,7 @@ __meta__ = {
 }
 
 [node name="WorldSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 
 [node name="Tome3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 871.533, 363.918 )
