@@ -28,9 +28,14 @@ func _ready():
 	add_to_group("Enemy")
 
 func _physics_process(delta):
-	if DOES_CONTACT_DAMAGE and collision != null:
-		if collision.collider.is_in_group("Player"):
-			collision.collider.damage(DAMAGE, collision.position - position)
+	if !DOES_CONTACT_DAMAGE:
+		return
+	if collision == null:
+		return
+	if collision.collider == null:
+		return
+	if collision.collider.is_in_group("Player"):
+		collision.collider.damage(DAMAGE, collision.position - position)
 
 func damage(damage, crit_chance, knockback_dir, spell):
 	#do knockback
@@ -45,10 +50,15 @@ func damage(damage, crit_chance, knockback_dir, spell):
 	
 	#create damage number. places it into world root so it doesnt stick to the enemy's local position
 	var _damage_num = damage_num.instance()
+	var _modifier_text = ""
 	_damage_num.rect_position = position
 	if crit_modifier > 1:
 		_damage_num.crit = true
-	_damage_num.text = str(damage_calculation)
+	if damage_modifier[spell] > 1:
+		_modifier_text = "\nWeak"
+	elif damage_modifier[spell] < 1:
+		_modifier_text = "\nResist"
+	_damage_num.text = str(damage_calculation) + _modifier_text
 	_damage_num.hit = self
 	get_parent().add_child(_damage_num)
 	

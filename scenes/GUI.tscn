@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/GUI.gd" type="Script" id=1]
 [ext_resource path="res://sprites/health_under.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://materials/DefaultFont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://sprites/window.png" type="Texture" id=6]
 [ext_resource path="res://sprites/tomes/default_aura.png" type="Texture" id=7]
+[ext_resource path="res://UpgradeWindow.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -158,3 +159,6 @@ margin_right = 113.595
 margin_bottom = -152.923
 rect_scale = Vector2( 3, 3 )
 texture = ExtResource( 7 )
+
+[node name="UpgradeWindow" parent="." instance=ExtResource( 8 )]
+visible = false

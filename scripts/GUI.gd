@@ -1,5 +1,9 @@
 extends Control
 
+func _process(delta):
+	if Input.is_action_just_pressed("inventory_open"):
+		$UpgradeWindow.visible = !$UpgradeWindow.visible
+
 func set_alert_text(text):
 	$Alert/AnimationPlayer.stop()
 	$Alert/AnimationPlayer.play("alert_fade")

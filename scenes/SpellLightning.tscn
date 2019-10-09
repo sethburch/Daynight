@@ -66,8 +66,9 @@ color = Color( 1, 0.847059, 0.196078, 1 )
 
 [node name="SpellLightning" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MAX_SPEED = 20
-DAMAGE = 20
+SPEED = 7.0
+TRAVEL_TIME = 3
+DAMAGE = 5
 SIZE = 0.5
 CAST_SPEED = 30
 explosion_particle = ExtResource( 3 )

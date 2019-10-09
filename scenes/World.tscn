@@ -37,8 +37,35 @@ position = Vector2( 650.709, 331.221 )
 [node name="Slime" parent="." instance=ExtResource( 3 )]
 position = Vector2( 189.073, 465.316 )
 
+[node name="Slime2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 274.597, 496.268 )
+
+[node name="Slime3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 448.903, 515.001 )
+
+[node name="Slime4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 351.976, 495.453 )
+
+[node name="Slime5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 78.2991, 302.413 )
+
+[node name="Slime6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 513.25, 437.623 )
+
 [node name="Fire Skull" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1242.8, 307.703 )
+position = Vector2( 888.487, 199.373 )
+
+[node name="Fire Skull5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 943.059, 337.026 )
+
+[node name="Fire Skull2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1138.54, 268.606 )
+
+[node name="Fire Skull3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1374.75, 250.687 )
+
+[node name="Fire Skull4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1374.75, 250.687 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )

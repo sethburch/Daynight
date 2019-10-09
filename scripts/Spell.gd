@@ -10,7 +10,6 @@ var MAX_BOUNCE = 3
 var dir := Vector2(0, 0)
 var GRAVITY : float = 10.0
 
-export var MAX_SPEED = 10
 export(float) var SPEED = 5.0
 export var TRAVEL_TIME = 5
 export var DESTROY_TIME = 2
