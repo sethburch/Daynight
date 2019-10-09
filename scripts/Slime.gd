@@ -4,13 +4,12 @@ const UP = Vector2(0, -1)
 const GRAVITY = 20
 const JUMP_VEL_HIGH = Vector2(180, -475)
 const JUMP_VEL_LOW = Vector2(100, -350)
-#var motion = Vector2()
+
 var waitTimer = 100
 var jumpTimer = 20
 var target = Vector2(0,0)
 var angry = false
 var rng = RandomNumberGenerator.new()
-var collision = KinematicCollision2D.new()
 var anim = ""
 var new_anim = ""
 
@@ -21,7 +20,7 @@ func _ready():
 	._ready()
 
 func _physics_process(delta):
-	
+	._physics_process(delta)
 	#play idle if we're not landing
 	if anim != "Land":
 		new_anim = "Idle"
@@ -63,6 +62,7 @@ func _physics_process(delta):
 			if waitTimer < 0 && anim != "Land" && anim != "Jump_fall":
 				jumpTimer -= 1
 				new_anim = "Prejump"
+
 	else:
 		if motion.y < -1:
 			new_anim = "Jump_rise"

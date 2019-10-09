@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Player
 
 const DUST_PARTICLE = preload("../scenes/DustParticle.tscn")
-const SPELL = preload("../scenes/Spell.tscn")
 var damage_num = preload("../scenes/DamageNum.tscn")
 
 const UP = Vector2(0, -1)

@@ -7,7 +7,6 @@ var wanderTimer = 0
 var attackTimer = 60
 var target = Vector2()
 var rng = RandomNumberGenerator.new()
-var collision = KinematicCollision2D.new()
 
 onready var home = get_position()
 onready var player = get_node("../Player")
@@ -21,6 +20,7 @@ func _ready():
 	damage_modifier[SCHOOL.ICE] =  MODIFIER_WEAK
 
 func _physics_process(delta):
+	._physics_process(delta)
 	if detectionRadius.overlaps_body(player):
 		target = player.get_position()
 		if position.distance_to(player.get_position()) > 150:
@@ -84,4 +84,5 @@ func attack():
 	this_spell.dir = Vector2(sign(player.position.x - position.x), 0)
 	this_spell.position = position + (this_spell.dir*20)
 	this_spell.spell_owner = self
+	this_spell.DAMAGE = DAMAGE
 	get_node("..").add_child(this_spell)

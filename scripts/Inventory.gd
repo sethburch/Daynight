@@ -19,8 +19,17 @@ func _on_Inventory_area_entered(area):
 		#removes the tome from the world
 		get_node("..").get_parent().remove_child(area)
 		
+		
+	#when we first pick up a tome
+	if inventory.size() == 1:
+		current_tome = inventory[inventory_index]
+		get_node("..").get_node("GUILayer/GUI").set_aura_visible(true)
+		#set the tome texture and aura color on our GUI
+		get_node("..").get_node("GUILayer/GUI").set_current_tome(current_tome.this_tome_sprite, current_tome.this_tome_color)
+		#show our current tome text
+		get_node("..").get_node("GUILayer/GUI").set_item_text(current_tome.tome_name)
+		
 func _process(delta):
-	update()
 	#cycles through inventory slots
 	if Input.is_action_just_pressed("inventory_right"):
 		inventory_index+=1
@@ -33,16 +42,3 @@ func _process(delta):
 			get_node("..").get_node("GUILayer/GUI").set_current_tome(current_tome.this_tome_sprite, current_tome.this_tome_color)
 			#show our current tome text
 			get_node("..").get_node("GUILayer/GUI").set_item_text(current_tome.tome_name)
-#			var sprite = current_tome.this_tome_sprite
-#			sprite.scale = Vector2(2, 2)
-#			Input.set_custom_mouse_cursor(sprite)
-		
-	#when we first pick up a tome
-	if inventory.size() == 1:
-		current_tome = inventory[inventory_index]
-		get_node("..").get_node("GUILayer/GUI").set_aura_visible(true)
-		#set the tome texture and aura color on our GUI
-		get_node("..").get_node("GUILayer/GUI").set_current_tome(current_tome.this_tome_sprite, current_tome.this_tome_color)
-#		var sprite = current_tome.this_tome_sprite
-#		sprite = Vector2(2, 2)
-#		Input.set_custom_mouse_cursor(sprite)

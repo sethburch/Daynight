@@ -12,7 +12,9 @@ var tome_sprites = [preload("../sprites/tomes/book_beam.png"),
 					preload("../sprites/tomes/book_guide.png"),
 					preload("../sprites/tomes/book_sine.png")]
 
-export(Array) var school = [preload("../scenes/SpellFire.tscn"), preload("../scenes/SpellIce.tscn")]
+export(Array) var school = [preload("../scenes/SpellFire.tscn"),
+							preload("../scenes/SpellIce.tscn"),
+							preload("../scenes/SpellLightning.tscn")]
 
 export(PackedScene) var current_school = school[0]
 export(int) var current_movement = MOVEMENT.BEAM

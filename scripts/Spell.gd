@@ -4,21 +4,23 @@ class_name Spell
 const UP = Vector2(0, -1)
 
 enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET}
-enum SCHOOL {FIRE, ICE}
+enum SCHOOL {FIRE, ICE, LIGHTNING}
 
 var MAX_BOUNCE = 3
 var dir := Vector2(0, 0)
+var GRAVITY : float = 10.0
 
 export var MAX_SPEED = 10
-export var SPEED = 5
+export(float) var SPEED = 5.0
 export var TRAVEL_TIME = 5
 export var DESTROY_TIME = 2
 export var DAMAGE = 20
-export var SIZE = 1
+export(float) var SIZE = 1.0
 export var CAST_SPEED = 60
+export var CRIT_CHANCE = .05
 
 var move = 0
-var velocity := Vector2(0, 0)
+var velocity := Vector2(0.0, 0.0)
 var spell_done = false
 var can_bounce = false
 var needs_physics = true
@@ -80,15 +82,13 @@ func _physics_process(delta):
 		MOVEMENT.BEAM:
 			velocity.x = dir.x * SPEED
 		MOVEMENT.ARC:
-			velocity += Vector2(0, .5)
+			velocity.y += (SPEED/GRAVITY)
 		MOVEMENT.BOUNCE:
-			velocity += Vector2(0, .5)
+			velocity.y += (SPEED/GRAVITY)
 		MOVEMENT.BURST:
 			velocity = dir
-			pass
 		MOVEMENT.MISSILE:
 			velocity = (get_global_mouse_position() - position).normalized() * SPEED
-			pass
 		MOVEMENT.ROCKET:
 			velocity.y = sin(((2*3.14)/120) * position.x) * SPEED
 			velocity.x = dir.x * SPEED
@@ -172,7 +172,7 @@ func _on_Hitbox_body_entered(body):
 		body.damage(DAMAGE, velocity)
 		
 	if body.is_in_group("Enemy"):
-		body.damage(DAMAGE, velocity, type)
+		body.damage(DAMAGE, CRIT_CHANCE, velocity, type)
 		times_bounced = MAX_BOUNCE
 
 	#the spell has hit a wall or enemy

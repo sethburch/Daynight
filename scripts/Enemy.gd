@@ -2,12 +2,14 @@ extends KinematicBody2D
 class_name Enemy
 
 enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET}
-enum SCHOOL {FIRE, ICE}
-var damage_modifier = [1, 1]
+enum SCHOOL {FIRE, ICE, LIGHTNING}
+var damage_modifier = [1, 1, 1]
 
 var death_particle = preload("../scenes/DeathParticle.tscn")
 var death_sound = preload("../sound/death_sound.wav")
 var damage_num = preload("../scenes/DamageNum.tscn")
+
+var collision = null
 
 const MODIFIER_WEAK = 1.75
 const MODIFIER_RESIST = 0.25
@@ -16,6 +18,8 @@ var part_angle = 0
 var motion = Vector2(0, 0)
 export(float) var KNOCKBACK_AMOUNT = 100
 export(int) var health = 100
+export(int) var DAMAGE = 30
+export(bool) var DOES_CONTACT_DAMAGE = true
 
 var hit_time = 0
 const HIT_TIME = 15
@@ -23,15 +27,27 @@ const HIT_TIME = 15
 func _ready():
 	add_to_group("Enemy")
 
-func damage(damage, knockback_dir, spell):
+func _physics_process(delta):
+	if DOES_CONTACT_DAMAGE and collision != null:
+		if collision.collider.is_in_group("Player"):
+			collision.collider.damage(DAMAGE, collision.position - position)
+
+func damage(damage, crit_chance, knockback_dir, spell):
 	#do knockback
 	motion += knockback_dir * KNOCKBACK_AMOUNT
+	#check for crit
+	var crit_modifier = 1
+	if randf() <= crit_chance:
+		crit_modifier = 2
+	
 	#calculate damage including resistances/weaknesses
-	var damage_calculation = round(damage * damage_modifier[spell])
+	var damage_calculation = round(damage * damage_modifier[spell] * crit_modifier)
 	
 	#create damage number. places it into world root so it doesnt stick to the enemy's local position
 	var _damage_num = damage_num.instance()
 	_damage_num.rect_position = position
+	if crit_modifier > 1:
+		_damage_num.crit = true
 	_damage_num.text = str(damage_calculation)
 	_damage_num.hit = self
 	get_parent().add_child(_damage_num)
