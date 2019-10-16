@@ -1,7 +1,7 @@
 extends Enemy
 
 const UP = Vector2(0, -1)
-const GRAVITY = 20
+var GRAVITY = speed/5
 const JUMP_VEL_HIGH = Vector2(180, -475)
 const JUMP_VEL_LOW = Vector2(100, -350)
 
@@ -35,13 +35,13 @@ func _physics_process(delta):
 		angry = false
 		var tempRand = rng.randi_range(0, 20)
 		if tempRand == 20:
-			target = Vector2(global_position.x + 100, global_position.y + 100)
+			target = Vector2(global_position.x + speed, global_position.y + speed)
 		elif tempRand == 19:
-			target = Vector2(global_position.x - 100, global_position.y + 100)
+			target = Vector2(global_position.x - speed, global_position.y + speed)
 		elif tempRand > 12:
-			target = Vector2(global_position.x + 75, global_position.y)
+			target = Vector2(global_position.x + (speed-25), global_position.y)
 		elif tempRand > 6:
-			target = Vector2(global_position.x - 75, global_position.y)
+			target = Vector2(global_position.x - (speed-25), global_position.y)
 		else:
 			target = Vector2(global_position.x, global_position.y + 20)
 	else:

@@ -1,8 +1,7 @@
 extends Enemy
 
-const MAX_SPEED = 150
+var MAX_SPEED = speed
 const ACCEL = 5
-#var motion = Vector2(0, 0)
 var wanderTimer = 0
 var attackTimer = 60
 var target = Vector2()

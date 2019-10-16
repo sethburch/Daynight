@@ -8,3 +8,4 @@ script = ExtResource( 2 )
 TRAVEL_TIME = 4
 DAMAGE = 10
 CRIT_CHANCE = 0.1
+CAN_DOT = true

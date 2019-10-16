@@ -2,11 +2,13 @@ extends Label
 
 var hit = null
 var crit = false
+var is_dot = false
 
 var damage_color = "#ffffff"
 export(Color) var player_color = Color("#ff6157")
 export(Color) var crit_color = Color("#ff823b")
 export(Color) var enemy_color = Color("#ffffff")
+export(Color) var dot_color = Color("#ffb762")
 var text_scale = 1
 
 func _ready():
@@ -17,6 +19,9 @@ func _ready():
 	if crit:
 		damage_color = crit_color
 		text_scale = 1.5
+	if is_dot:
+		damage_color = dot_color
+		
 	$AnimationPlayer.play("damage")
 	$Tween.interpolate_property(
 		self, "rect_position",

@@ -3,13 +3,13 @@
 [ext_resource path="res://EquipmentPro.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/DamageNum.gd" type="Script" id=2]
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=1]
 render_priority = 1
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -37,14 +37,14 @@ tracks/1/keys = {
 }
 
 [node name="DamageNum" type="Label"]
-material = SubResource( 3 )
+material = SubResource( 1 )
 margin_right = 21.0
 margin_bottom = 16.0
 grow_horizontal = 2
 rect_scale = Vector2( 0.1, 0.1 )
 rect_pivot_offset = Vector2( 10, 7.5 )
 size_flags_horizontal = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.0156863, 0.0823529, 0.156863, 1 )
 custom_constants/shadow_offset_x = 0
@@ -55,7 +55,7 @@ valign = 1
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/damage = SubResource( 2 )
+anims/damage = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 

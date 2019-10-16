@@ -8,8 +8,11 @@ var damage_modifier = [1, 1, 1]
 var death_particle = preload("../scenes/DeathParticle.tscn")
 var death_sound = preload("../sound/death_sound.wav")
 var damage_num = preload("../scenes/DamageNum.tscn")
+var DOT = preload("../scenes/DOT.tscn")
+var slow_effect = preload("../scenes/SlowEffect.tscn")
 
 var collision = null
+export(int) var speed = 100
 
 const MODIFIER_WEAK = 1.75
 const MODIFIER_RESIST = 0.25
@@ -37,7 +40,7 @@ func _physics_process(delta):
 	if collision.collider.is_in_group("Player"):
 		collision.collider.damage(DAMAGE, collision.position - position)
 
-func damage(damage, crit_chance, knockback_dir, spell):
+func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	#do knockback
 	motion += knockback_dir * KNOCKBACK_AMOUNT
 	#check for crit
@@ -60,6 +63,7 @@ func damage(damage, crit_chance, knockback_dir, spell):
 		_modifier_text = "\nResist"
 	_damage_num.text = str(damage_calculation) + _modifier_text
 	_damage_num.hit = self
+	_damage_num.is_dot = is_dot
 	get_parent().add_child(_damage_num)
 	
 	#do damage and create particles
@@ -88,3 +92,17 @@ func _process(delta):
 		modulate = Color(1, 1, 1, 1)
 		hit_time = 0
 		set_process(false)
+		
+func apply_dot(DOT_DAMAGE, time, ticks, type):
+	var dot = DOT.instance()
+	dot.damage = DOT_DAMAGE
+	dot.length = time
+	dot.tick_length = ticks
+	dot.type = type
+	add_child(dot)
+
+func apply_slow(time, amount):
+	var slow = slow_effect.instance()
+	slow.length = time
+	slow.amount = amount
+	add_child(slow)

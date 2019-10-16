@@ -14,9 +14,12 @@ export(float) var SPEED = 5.0
 export var TRAVEL_TIME = 5
 export var DESTROY_TIME = 2
 export var DAMAGE = 20
+export var DOT_DAMAGE = 2
 export(float) var SIZE = 1.0
 export var CAST_SPEED = 60
 export var CRIT_CHANCE = .05
+export var CAN_DOT = false
+export var CAN_SLOW = false
 
 var move = 0
 var velocity := Vector2(0.0, 0.0)
@@ -171,7 +174,14 @@ func _on_Hitbox_body_entered(body):
 		body.damage(DAMAGE, velocity)
 		
 	if body.is_in_group("Enemy"):
-		body.damage(DAMAGE, CRIT_CHANCE, velocity, type)
+		#prevents friendly fire
+		if spell_owner.is_in_group("Enemy"):
+			return
+		body.damage(DAMAGE, CRIT_CHANCE, velocity, type, false)
+		if CAN_DOT:
+			body.apply_dot(DOT_DAMAGE, 10, 2, type)
+		if CAN_SLOW:
+			body.apply_slow(10, 2)
 		times_bounced = MAX_BOUNCE
 
 	#the spell has hit a wall or enemy
