@@ -70,7 +70,7 @@ func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	health -= damage_calculation
 	hit_time = 0
 	part_angle = knockback_dir.angle()
-	modulate = Color(1, 0, 0, 1)
+	#modulate = Color(1, 0, 0, 1)
 	set_process(true)
 	
 func _process(delta):
@@ -89,7 +89,7 @@ func _process(delta):
 	
 	hit_time+=1
 	if hit_time > HIT_TIME:
-		modulate = Color(1, 1, 1, 1)
+		#modulate = Color(1, 1, 1, 1)
 		hit_time = 0
 		set_process(false)
 		

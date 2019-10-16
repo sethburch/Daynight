@@ -17,6 +17,6 @@ func _ready():
 	get_parent().modulate = Color(0, 0, 1)
 	
 func _on_slow_length_timeout():
-	get_parent().modulate = Color(0, 0, 0)
+	get_parent().modulate = Color(1, 1, 1)
 	get_parent().speed = default_speed
 	queue_free()
