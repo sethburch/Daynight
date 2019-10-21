@@ -1,31 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/placeholder_tile.png" type="Texture" id=3]
+[ext_resource path="res://scenes/DefaultTileset.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/Tome.tscn" type="PackedScene" id=4]
 [ext_resource path="res://EnemyMushroom.tscn" type="PackedScene" id=5]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-
-[sub_resource type="TileSet" id=2]
-0/name = "placeholder_tile.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 32, 32 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
 
 [node name="World" type="Node"]
 script = ExtResource( 1 )
@@ -34,7 +13,7 @@ script = ExtResource( 1 )
 position = Vector2( 650.709, 331.221 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
 collision_layer = 7
