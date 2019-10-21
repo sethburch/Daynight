@@ -42,14 +42,19 @@ config/name="Daynight"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
-window/size/width=768
-window/size/height=432
+window/size/width=480
+window/size/height=270
 window/size/resizable=false
-window/size/test_width=1536
-window/size/test_height=864
+window/size/test_width=1440
+window/size/test_height=810
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [importer_defaults]
 
