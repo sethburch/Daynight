@@ -44,13 +44,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1920
+window/size/width=768
+window/size/height=432
 window/size/resizable=false
-window/size/test_width=960
-window/size/test_height=960
+window/size/test_width=1536
+window/size/test_height=864
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
 
 [importer_defaults]
 
@@ -150,8 +149,9 @@ inventory_open={
 
 [physics]
 
-common/physics_jitter_fix=2.0
+common/physics_jitter_fix=0.0
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

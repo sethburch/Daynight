@@ -352,17 +352,17 @@ func create_2d_array(width, height, value):
             a[y][x] = value
     return a
 	
-func _process(delta):
-	if Input.is_action_just_pressed("move_up"):
-		$Camera2D.zoom += Vector2(0.5, 0.5)
-	if Input.is_action_just_pressed("move_down"):
-		$Camera2D.zoom -= Vector2(0.5, 0.5)
-	if Input.is_action_pressed("move_right"):
-		$Camera2D.offset.x += 20
-	if Input.is_action_pressed("move_left"):
-		$Camera2D.offset.x -= 20
-	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("jump"):
-		print_debug(map)
+#func _process(delta):
+#	if Input.is_action_just_pressed("move_up"):
+#		$Camera2D.zoom += Vector2(0.5, 0.5)
+#	if Input.is_action_just_pressed("move_down"):
+#		$Camera2D.zoom -= Vector2(0.5, 0.5)
+#	if Input.is_action_pressed("move_right"):
+#		$Camera2D.offset.x += 20
+#	if Input.is_action_pressed("move_left"):
+#		$Camera2D.offset.x -= 20
+#	if Input.is_action_just_pressed("reset"):
+#		get_tree().reload_current_scene()
+#	if Input.is_action_just_pressed("jump"):
+#		print_debug(map)
 		#print_debug(main_path_array)
