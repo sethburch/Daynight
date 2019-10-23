@@ -10,6 +10,7 @@ var death_sound = preload("../sound/death_sound.wav")
 var damage_num = preload("../scenes/DamageNum.tscn")
 var DOT = preload("../scenes/DOT.tscn")
 var slow_effect = preload("../scenes/SlowEffect.tscn")
+var paralyze_effect = preload("../scenes/ParalyzeEffect.tscn")
 
 var collision = null
 export(int) var speed = 100
@@ -42,7 +43,7 @@ func _physics_process(delta):
 
 func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	#do knockback
-	motion += knockback_dir * KNOCKBACK_AMOUNT
+	motion += knockback_dir.normalized() * KNOCKBACK_AMOUNT
 	#check for crit
 	var crit_modifier = 1
 	if randf() <= crit_chance:
@@ -106,3 +107,8 @@ func apply_slow(time, amount):
 	slow.length = time
 	slow.amount = amount
 	add_child(slow)
+	
+func apply_paralyze(time):
+	var paralyze = paralyze_effect.instance()
+	paralyze.length = time
+	add_child(paralyze)

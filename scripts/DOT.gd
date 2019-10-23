@@ -14,6 +14,7 @@ func _ready():
 	add_child(dot_length)
 	dot_length.wait_time = length
 	dot_length.start()
+	get_parent().modulate = Color(1, .5, .2)
 	
 func _process(delta):
 	dot_tick_timer+=1
@@ -22,4 +23,5 @@ func _process(delta):
 		get_parent().damage(damage, 0, Vector2(0, 0), type, true)
 	
 func _on_dot_length_timeout():
+	get_parent().modulate = Color(1,1,1)
 	queue_free()

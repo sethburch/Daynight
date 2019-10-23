@@ -3,7 +3,6 @@
 [ext_resource path="res://world_gen_nodes/WorldGenNode.tscn" type="PackedScene" id=1]
 
 [node name="URD" instance=ExtResource( 1 )]
-folder_path = "res://world_gen_nodes/URD/"
 paths = [ 1, 2, 3 ]
 up = true
 right = true

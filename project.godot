@@ -50,9 +50,9 @@ Global="*res://Global.gd"
 
 window/size/width=480
 window/size/height=270
-window/size/resizable=false
 window/size/test_width=1440
 window/size/test_height=810
+mouse_cursor/custom_image="res://cursor_sprite.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 

@@ -203,7 +203,7 @@ func dust_particle():
 	var dust_particle = DUST_PARTICLE.instance()
 	get_node("..").add_child(dust_particle)
 	dust_particle.set_position(self.get_position())
-	dust_particle.position.y += 16
+	dust_particle.position.y += 13
 	dust_particle.position.x -= 2
 	
 func damage(damage, knockback_dir):

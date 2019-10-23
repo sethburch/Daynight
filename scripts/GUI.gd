@@ -3,6 +3,7 @@ extends Control
 func _process(delta):
 	if Input.is_action_just_pressed("inventory_open"):
 		$UpgradeWindow.visible = !$UpgradeWindow.visible
+	$Cursor.rect_position = get_local_mouse_position() + Vector2(10, 10)
 
 func set_alert_text(text):
 	$Alert/AnimationPlayer.stop()
@@ -20,6 +21,9 @@ func set_item_text(text):
 func set_current_tome(tome_texture, aura_color):
 	$CenterContainer/CurrentTome.texture = tome_texture
 	$CurrentAura.modulate = aura_color
+	$Cursor.visible = true
+	$Cursor/Tome.texture = tome_texture
+	$Cursor/Aura.modulate = aura_color
 
 func set_aura_visible(visibility):
 	$CurrentAura.visible = visibility

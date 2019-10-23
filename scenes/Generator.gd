@@ -36,8 +36,8 @@ var next_node = null
 var current_col = 0
 var current_row = 0
 
-var node_height = 320
-var node_width = 320
+var node_height = 160
+var node_width = 160
 export(int) var height = 2
 export(int) var width = 100
 
@@ -365,4 +365,4 @@ func create_2d_array(width, height, value):
 #		get_tree().reload_current_scene()
 #	if Input.is_action_just_pressed("jump"):
 #		print_debug(map)
-		#print_debug(main_path_array)
+#		print_debug(main_path_array)

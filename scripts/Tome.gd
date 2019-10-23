@@ -3,14 +3,15 @@ class_name Tome
 
 const UP = Vector2(0, -1)
 
-enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET}
-var move_names = ["Beaming", "Arching", "Bouncing", "Bursting", "Guiding", "Rocketing"]
+enum MOVEMENT {BEAM, ARC, BOUNCE, BURST, MISSILE, ROCKET, LEAP}
+var move_names = ["Beaming", "Arching", "Bouncing", "Bursting", "Guiding", "Rocketing", "Leaping"]
 var tome_sprites = [preload("../sprites/tomes/book_beam.png"),
 					preload("../sprites/tomes/book_arc.png"),
 					preload("../sprites/tomes/book_bounce.png"),
 					preload("../sprites/tomes/book_burst.png"),
 					preload("../sprites/tomes/book_guide.png"),
-					preload("../sprites/tomes/book_sine.png")]
+					preload("../sprites/tomes/book_sine.png"),
+					preload("../sprites/tomes/defense_book.png")]
 
 export(Array) var school = [preload("../scenes/SpellFire.tscn"),
 							preload("../scenes/SpellIce.tscn"),
@@ -24,6 +25,7 @@ var this_tome_sprite = tome_sprites[0]
 var this_tome_color = Color("#ffffff")
 
 func _ready():
+	randomize()
 	add_to_group("Tome")
 	$Sprites/AnimationPlayer.play("tome_float")
 	
