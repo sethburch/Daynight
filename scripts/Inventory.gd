@@ -17,7 +17,8 @@ func _on_Inventory_area_entered(area):
 		print_debug("You picked up: " + area.tome_name)
 		
 		#removes the tome from the world
-		get_node("..").get_parent().remove_child(area)
+		#get_node("..").get_parent().remove_child(area)
+		area.remove()
 		
 		
 	#when we first pick up a tome

@@ -2,6 +2,7 @@ extends Node2D
 
 enum P {L, U, R, D}
 
+var is_item_node : bool = false
 
 export(Array) var paths = [0,1,2,3]
 export(bool) var left = false
@@ -16,6 +17,9 @@ func _ready():
 	var _scene_num = randi() % nodes.size() + 1
 	var _s = load(path + "/" + str(_scene_num) + ".tscn")
 	var inst = _s.instance()
+#	for i in inst.get_children():
+#		if i.name == "ItemSpawner":
+#			inst.is_item_node = true
 	inst.global_position = global_position
 	inst.modulate = modulate
 	get_parent().add_child(inst)

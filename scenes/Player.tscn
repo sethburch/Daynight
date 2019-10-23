@@ -16,10 +16,10 @@
 [ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=14]
 [ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=15]
 [ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=16]
-[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=17]
-[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=18]
-[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=19]
-[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=20]
+[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=17]
+[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=18]
+[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=19]
+[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=20]
 [ext_resource path="res://sprites/player/move/run01.png" type="Texture" id=21]
 [ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=22]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=23]
@@ -55,12 +55,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "jump_fall",
+"name": "jump_peak",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "jump_peak",
+"name": "jump_fall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ) ],
