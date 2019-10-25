@@ -34,6 +34,11 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
 "loop": true,
+"name": "Land",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
 "name": "Prejump",
 "speed": 6.0
 }, {
@@ -67,7 +72,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "LookDown",
+"name": "Prejump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
@@ -124,7 +129,7 @@ script = ExtResource( 12 )
 [node name="BrowsSprite" type="AnimatedSprite" parent="."]
 use_parent_material = true
 frames = SubResource( 3 )
-animation = "Idle"
+animation = "Prejump"
 playing = true
 script = ExtResource( 19 )
 

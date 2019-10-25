@@ -85,7 +85,7 @@ func _initial_cast():
 func _physics_process(delta):
 	match move:
 		MOVEMENT.BEAM:
-			velocity.x = dir.x * SPEED
+			velocity = dir * SPEED#velocity.x = dir.x * SPEED
 		MOVEMENT.ARC:
 			velocity.y += (SPEED/GRAVITY)
 		MOVEMENT.BOUNCE:
