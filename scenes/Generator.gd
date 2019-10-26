@@ -242,6 +242,9 @@ func _ready():
 				wn.global_position = Vector2((j)*node_height, (i)*node_width)
 				add_child(wn)
 				map[i][j] = wn
+				
+	#update tilemap
+	$TileMap.update_bitmask_region()
 
 func create_branch(x, y, dir):
 	exclude_paths.clear()
