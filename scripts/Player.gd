@@ -5,7 +5,7 @@ const DUST_PARTICLE = preload("../scenes/DustParticle.tscn")
 var damage_num = preload("../scenes/DamageNum.tscn")
 
 const UP = Vector2(0, -1)
-const GRAVITY = Vector2(0, 900)
+const GRAVITY = 900
 const MAX_FALL_SPEED = Vector2(0, 1500)
 const JUMP_SPEED = 400
 const JUMP_HEIGHT = 400
@@ -54,11 +54,16 @@ func _physics_process(delta):
 		player_dir = haxis
 
 	#add gravity if we havent reached max fall speed yet
-	if motion.y < MAX_FALL_SPEED.y:
-		motion += delta * GRAVITY
+	if !is_on_floor():
+		motion.y += GRAVITY * delta
+		if motion.y > GRAVITY:
+			motion.y = GRAVITY
 	
 	#move
-	motion = move_and_slide(motion, UP)
+	var snap_vector = Vector2(0, 7) # magic number is 7
+	if has_jumped:
+		snap_vector = Vector2(0, 0)
+	motion = move_and_slide_with_snap(motion, snap_vector, UP, true, 4, deg2rad(50))
 	
 	#play idle if we're not landing
 	if anim != "squash":
@@ -151,10 +156,10 @@ func _physics_process(delta):
 
 	#deceleration
 	if is_on_floor():
-		if friction:
+		if friction and motion.x != 0:
 			motion.x = lerp(motion.x, 0, GROUND_FRICTION)
 	else:
-		if friction:
+		if friction and motion.x != 0:
 			motion.x = lerp(motion.x, 0, AIR_FRICTION)
 
 func _process(delta):

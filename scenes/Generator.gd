@@ -36,8 +36,8 @@ var next_node = null
 var current_col = 0
 var current_row = 0
 
-var node_height = 160
-var node_width = 160
+var node_height = 320
+var node_width = 464
 export(int) var height = 2
 export(int) var width = 100
 
@@ -52,7 +52,7 @@ func _ready():
 	#current_row = randi() % height
 	
 	current_node = Vector2(current_col, current_row)
-	current_coords = Vector2(current_col*node_height, current_row*node_width)
+	current_coords = Vector2(current_col*node_width, current_row*node_height)
 
 	#place start node
 	var sn = start_node.instance()
@@ -71,7 +71,7 @@ func _ready():
 	#create main path
 	while(current_col < width):
 		current_node = Vector2(current_col, current_row)
-		current_coords = Vector2(current_col*node_height, current_row*node_width)
+		current_coords = Vector2(current_col*node_width, current_row*node_height)
 		
 		#var previous_node = current_node
 				
@@ -239,7 +239,7 @@ func _ready():
 		for j in map[i].size():
 			if map[i][j] == null:
 				var wn = wall_node.instance()
-				wn.global_position = Vector2((j)*node_height, (i)*node_width)
+				wn.global_position = Vector2((j)*node_width, (i)*node_height)
 				add_child(wn)
 				map[i][j] = wn
 				
@@ -324,7 +324,7 @@ func create_branch(x, y, dir):
 			
 	if current_nodes_array.size() > 0: # later on can remove in favor of 1 entrance rooms (these are exclusive to branching paths)
 		next_node = current_nodes_array[randi() % current_nodes_array.size()]
-		next_node.global_position = Vector2((x)*node_height, (y)*node_width)
+		next_node.global_position = Vector2((x)*node_width, (y)*node_height)
 		#next_node.modulate = Color(1, 0, 0)
 		add_child(next_node)
 		map[y][x] = next_node
@@ -355,17 +355,20 @@ func create_2d_array(width, height, value):
             a[y][x] = value
     return a
 	
-#func _process(delta):
-#	if Input.is_action_just_pressed("move_up"):
-#		$Camera2D.zoom += Vector2(0.5, 0.5)
-#	if Input.is_action_just_pressed("move_down"):
-#		$Camera2D.zoom -= Vector2(0.5, 0.5)
-#	if Input.is_action_pressed("move_right"):
-#		$Camera2D.offset.x += 20
-#	if Input.is_action_pressed("move_left"):
-#		$Camera2D.offset.x -= 20
-#	if Input.is_action_just_pressed("reset"):
-#		get_tree().reload_current_scene()
-#	if Input.is_action_just_pressed("jump"):
-#		print_debug(map)
-#		print_debug(main_path_array)
+	
+######### DEBUG
+func _process(delta):
+	if Input.is_action_pressed("move_up"):
+		$Camera2D.offset.y -= 20
+	if Input.is_action_pressed("move_down"):
+		$Camera2D.offset.y += 20
+	if Input.is_action_pressed("move_right"):
+		$Camera2D.offset.x += 20
+	if Input.is_action_pressed("move_left"):
+		$Camera2D.offset.x -= 20
+	if Input.is_action_just_pressed("scroll_up"):
+		$Camera2D.zoom += Vector2(0.5, 0.5)
+	if Input.is_action_just_pressed("scroll_down"):
+		$Camera2D.zoom -= Vector2(0.5, 0.5)
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()

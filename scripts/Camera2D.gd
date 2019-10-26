@@ -19,8 +19,7 @@ func _process(delta):
 #	if get_parent().player_dir ==  1:
 #		offset.x = lerp(offset.x, 50, 0.01)
 		
-	if (get_global_mouse_position() - global_position).length() > 50:
-		offset = lerp(offset, (get_global_mouse_position() - global_position).normalized() * 50, 0.03)
+	offset = lerp(offset, lerp(Vector2(0,0), get_local_mouse_position(), 0.3), 0.1)
 	
 	# Only shake when there's shake time remaining.
 	if _timer == 0:
