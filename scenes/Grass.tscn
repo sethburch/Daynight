@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/grass.png" type="Texture" id=1]
+[ext_resource path="res://Grass.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.3316, 6.64986 )
+
+[node name="Grass" type="Polygon2D"]
+texture = ExtResource( 1 )
+skeleton = NodePath("Skeleton2D")
+polygon = PoolVector2Array( 15.25, 3, 15.25, 16, 2.25, 16, 2.25, 3 )
+uv = PoolVector2Array( 13.25, 4.25, 13.75, 16, 3.25, 16, 3.5, 3.25 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 0, 0, 0.5 ) ]
+script = ExtResource( 2 )
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D( 1, 0, 0, 1, 0, 0 )
+default_length = 10.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 8.4841, 9.34617 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

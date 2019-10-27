@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://scripts/Enemy.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Spell",
 "language": "GDScript",
-"path": "res://scenes/Spell.gd"
+"path": "res://scripts/Spell.gd"
 }, {
 "base": "Area2D",
 "class": "Tome",
 "language": "GDScript",
-"path": "res://Tome.gd"
+"path": "res://scripts/Tome.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
@@ -39,15 +39,22 @@ _global_script_class_icons={
 [application]
 
 config/name="Daynight"
-run/main_scene="res://World.tscn"
+run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Global.gd"
 
 [display]
 
-window/size/width=320
-window/size/height=180
-window/size/test_width=1280
-window/size/test_height=720
+window/size/width=480
+window/size/height=270
+window/size/test_width=1440
+window/size/test_height=810
+mouse_cursor/custom_image="res://cursor_sprite.png"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [importer_defaults]
 
@@ -137,14 +144,29 @@ reset={
 inventory_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+inventory_open={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":67,"unicode":0,"echo":false,"script":null)
+ ]
+}
+scroll_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+scroll_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
  ]
 }
 
 [physics]
 
-common/physics_jitter_fix=2.0
+common/physics_jitter_fix=0.0
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

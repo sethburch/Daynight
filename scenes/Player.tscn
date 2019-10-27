@@ -1,0 +1,221 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Stats.gd" type="Script" id=2]
+[ext_resource path="res://sprites/player/idle/idle00.png" type="Texture" id=3]
+[ext_resource path="res://sprites/player/idle/idle01.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/idle/idle02.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/jump/jump07.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/move/run01.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/jump/jump01.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/jump/jump02.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/move/run02.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/move/run03.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/move/run04.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/move/run05.png" type="Texture" id=15]
+[ext_resource path="res://sprites/player/move/run06.png" type="Texture" id=16]
+[ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=17]
+[ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=18]
+[ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=19]
+[ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=20]
+[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=21]
+[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=22]
+[ext_resource path="res://sprites/player/look_up/look_up3.png" type="Texture" id=23]
+[ext_resource path="res://sprites/player/crouch/to_crouching2.png" type="Texture" id=24]
+[ext_resource path="res://sprites/player/crouch/to_crouching3.png" type="Texture" id=25]
+[ext_resource path="res://sprites/player/crouch/to_crouching4.png" type="Texture" id=26]
+[ext_resource path="res://sprites/player/crouch/to_crouching5.png" type="Texture" id=27]
+[ext_resource path="res://sprites/player/crouch/crouching_idle1.png" type="Texture" id=28]
+[ext_resource path="res://sprites/player/crouch/crouching_idle2.png" type="Texture" id=29]
+[ext_resource path="res://sprites/player/crouch/crouching_idle3.png" type="Texture" id=30]
+[ext_resource path="res://sprites/player/crouch/crouching_idle4.png" type="Texture" id=31]
+[ext_resource path="res://sprites/player/crouch/crouching_idle5.png" type="Texture" id=32]
+[ext_resource path="res://sprites/player/look_up/look_up2.png" type="Texture" id=33]
+[ext_resource path="res://sprites/player/climb/climb1.png" type="Texture" id=34]
+[ext_resource path="res://sprites/player/climb/climb2.png" type="Texture" id=35]
+[ext_resource path="res://sprites/player/climb/climb3.png" type="Texture" id=36]
+[ext_resource path="res://sprites/player/climb/climb4.png" type="Texture" id=37]
+[ext_resource path="res://sprites/player/climb/climb5.png" type="Texture" id=38]
+[ext_resource path="res://sprites/player/climb/climb6.png" type="Texture" id=39]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=40]
+[ext_resource path="res://scripts/Inventory.gd" type="Script" id=41]
+[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=42]
+[ext_resource path="res://sprites/backgrounds/sky/sky_night.png" type="Texture" id=43]
+[ext_resource path="res://sprites/backgrounds/forest/bg4.png" type="Texture" id=44]
+[ext_resource path="res://sprites/backgrounds/forest/bg3.png" type="Texture" id=45]
+[ext_resource path="res://sprites/backgrounds/forest/bg2.png" type="Texture" id=46]
+[ext_resource path="res://sprites/backgrounds/forest/bg1.png" type="Texture" id=47]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "squash",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "run_inital",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "jump_rise",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "jump_fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "jump_inital",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "jump_peak",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "looking_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "to_crouch",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 31 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "crouching",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "look_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": true,
+"name": "climb",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2.99506, 9.05246 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 20.614
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 12.8899
+height = 2.22655
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 33
+collision_mask = 33
+script = ExtResource( 1 )
+
+[node name="Stats" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 7 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_speed = 20.0
+drag_margin_left = 0.1
+drag_margin_top = 0.1
+drag_margin_right = 0.1
+drag_margin_bottom = 0.1
+script = ExtResource( 40 )
+
+[node name="Cast" type="Position2D" parent="."]
+position = Vector2( 16, 2 )
+
+[node name="Inventory" type="Area2D" parent="."]
+script = ExtResource( 41 )
+
+[node name="PickupRadius" type="CollisionShape2D" parent="Inventory"]
+position = Vector2( 0, 4 )
+shape = SubResource( 3 )
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="GUILayer" instance=ExtResource( 42 )]
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0, 0 )
+
+[node name="BG" type="Sprite" parent="ParallaxBackground/Sky"]
+texture = ExtResource( 43 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 44 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 46 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource( 47 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="LadderRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderRadius"]
+position = Vector2( 0, 2 )
+shape = SubResource( 4 )
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="area_entered" from="Inventory" to="Inventory" method="_on_Inventory_area_entered"]
+[connection signal="area_entered" from="LadderRadius" to="." method="_on_LadderRadius_area_entered"]
+[connection signal="area_exited" from="LadderRadius" to="." method="_on_LadderRadius_area_exited"]
