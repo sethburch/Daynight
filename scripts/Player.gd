@@ -74,7 +74,7 @@ func _physics_process(delta):
 		
 	#crouching and looking up
 	if is_on_floor() and (floor(motion.x) < 10 and floor(motion.x) > -10) and current_ladder == null:
-		if Input.is_action_pressed("move_down"):
+		if Input.is_action_pressed("move_down") and (!Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right")):
 			crouching = true
 			if Input.is_action_just_pressed("jump"):
 				set_collision_layer_bit(5, 0)
@@ -82,7 +82,7 @@ func _physics_process(delta):
 			$Camera2D.mode = $Camera2D.MODES.PEEK_DOWN
 			if anim != "crouching" and anim != "to_crouch":
 				new_anim = "to_crouch"
-		elif Input.is_action_pressed("move_up"):
+		elif Input.is_action_pressed("move_up") and (!Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right")):
 			$Camera2D.mode = $Camera2D.MODES.PEEK_UP
 			if anim != "looking_up" and anim != "look_up":
 				new_anim = "look_up"
@@ -139,7 +139,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if Input.is_action_pressed("move_right"):
 			motion.x = min(motion.x+ACCELERATION, MAX_SPEED)
-			if motion.x < ACCELERATION*4:
+			if motion.x < ACCELERATION*4 and motion.x > 0:
 				dust_particle()
 				new_anim = "run_inital"
 			else:
@@ -148,7 +148,7 @@ func _physics_process(delta):
 			friction = false
 		elif Input.is_action_pressed("move_left"):
 			motion.x = max(motion.x-ACCELERATION, -MAX_SPEED)
-			if motion.x > -ACCELERATION*4:
+			if motion.x > -ACCELERATION*4 and motion.x > 0:
 				dust_particle()
 				new_anim = "run_inital"
 			else:

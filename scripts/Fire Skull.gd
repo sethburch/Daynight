@@ -32,7 +32,6 @@ func _physics_process(delta):
 			if target.y > global_position.y:
 				motion.y -= ACCEL
 		if attackTimer < 0:
-			print_debug("test")
 			attack()
 			attackTimer = rng.randi_range(60, 120)
 		attackTimer -= 1

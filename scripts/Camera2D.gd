@@ -14,6 +14,12 @@ var _previous_y = 0.0
 var _last_offset = Vector2(0, 0)
 
 func _ready():
+	var gen_node = get_parent().get_parent().get_parent()
+	if gen_node.name == "Generator":
+		limit_left = 0
+		limit_top = 0
+		limit_bottom = gen_node.node_height*gen_node.height
+		limit_right = gen_node.node_width*gen_node.width
 	set_process(true)
 
 # Shake with decreasing intensity while there's time remaining.

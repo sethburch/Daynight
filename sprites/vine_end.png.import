@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/health_under.png-63b0c8178e4027aec0ae9a107361c1f6.stex"
+path="res://.import/vine_end.png-e063d3bf68fc9d57a8970071800703cc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/health_under.png"
-dest_files=[ "res://.import/health_under.png-63b0c8178e4027aec0ae9a107361c1f6.stex" ]
+source_file="res://sprites/vine_end.png"
+dest_files=[ "res://.import/vine_end.png-e063d3bf68fc9d57a8970071800703cc.stex" ]
 
 [params]
 
