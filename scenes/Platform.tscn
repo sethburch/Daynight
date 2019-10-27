@@ -6,14 +6,16 @@
 extents = Vector2( 32, 2.5 )
 
 [node name="Platform" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.5 )
+shape = SubResource( 1 )
+one_way_collision = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 8 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 16 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2.5 )
-shape = SubResource( 1 )
-one_way_collision = true

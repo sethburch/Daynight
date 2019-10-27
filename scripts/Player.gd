@@ -6,7 +6,7 @@ var damage_num = preload("../scenes/DamageNum.tscn")
 
 const UP = Vector2(0, -1)
 const GRAVITY = 900
-const MAX_FALL_SPEED = Vector2(0, 1500)
+const MAX_FALL_SPEED = 500
 const JUMP_SPEED = 400
 const JUMP_HEIGHT = 400
 const ACCELERATION = 50
@@ -20,6 +20,11 @@ const JUMP_BUFFER_MAX = 6
 
 export(int) var MAX_HEALTH = 100
 var health = MAX_HEALTH
+
+var on_ladder = false
+var current_ladder = null
+var ladder_jump = false
+var crouching = false
 
 var motion = Vector2()
 var friction = false
@@ -45,8 +50,6 @@ func _ready():
 	add_to_group("Player")
 
 func _physics_process(delta):
-	#$Camera2D.zoom = Global.viewport.size/Global.window_size
-	
 	haxis = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	vaxis = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	
@@ -54,20 +57,43 @@ func _physics_process(delta):
 		player_dir = haxis
 
 	#add gravity if we havent reached max fall speed yet
-	if !is_on_floor():
+	if !is_on_floor() and !on_ladder:
 		motion.y += GRAVITY * delta
-		if motion.y > GRAVITY:
-			motion.y = GRAVITY
+		if motion.y >= MAX_FALL_SPEED:
+			motion.y = MAX_FALL_SPEED
 	
 	#move
-	var snap_vector = Vector2(0, 7) # magic number is 7
-	if has_jumped:
+	var snap_vector = Vector2(0, 7) # magic number is 7, keeps us attached to slopes
+	if has_jumped or on_ladder:
 		snap_vector = Vector2(0, 0)
-	motion = move_and_slide_with_snap(motion, snap_vector, UP, true, 4, deg2rad(50))
+	motion = move_and_slide_with_snap(motion, snap_vector, UP, true, 4, deg2rad(46))
 	
-	#play idle if we're not landing
-	if anim != "squash":
+	#play idle if we're not landing and crouching and looking up (i promise i dont know a better way to do this)
+	if anim != "squash" and anim != "to_crouch" and anim != "looking_up" and anim != "look_up" and anim != "crouching":
 		new_anim = "idle"
+		
+	#crouching and looking up
+	if is_on_floor() and (floor(motion.x) < 10 and floor(motion.x) > -10) and current_ladder == null:
+		if Input.is_action_pressed("move_down"):
+			crouching = true
+			if Input.is_action_just_pressed("jump"):
+				set_collision_layer_bit(5, 0)
+				set_collision_mask_bit(5, 0)
+			$Camera2D.mode = $Camera2D.MODES.PEEK_DOWN
+			if anim != "crouching" and anim != "to_crouch":
+				new_anim = "to_crouch"
+		elif Input.is_action_pressed("move_up"):
+			$Camera2D.mode = $Camera2D.MODES.PEEK_UP
+			if anim != "looking_up" and anim != "look_up":
+				new_anim = "look_up"
+		else:
+			$Camera2D.mode = $Camera2D.MODES.CURSOR
+			new_anim = "idle"
+			crouching = false
+	else:
+		$Camera2D.mode = $Camera2D.MODES.CURSOR
+		new_anim = "idle"
+		crouching = false
 	
 	#play landing animation when hitting ground
 	if is_on_floor() and anim == "jump_fall":
@@ -75,25 +101,21 @@ func _physics_process(delta):
 		new_anim = "squash"
 
 	#jumping with buffer
-	if is_on_floor():
+	if is_on_floor() and !crouching:
+		set_collision_layer_bit(5, 1)
+		set_collision_mask_bit(5, 1)
 		coyote_jump_buffer = 0
 		if !has_jumped and jump_buffer < JUMP_BUFFER_MAX:
 			jump_buffer = JUMP_BUFFER_MAX
-			has_jumped = true
-			motion.y = -JUMP_SPEED
-			new_anim = "jump_inital"
-			dust_particle()
+			jump()
 	jump_buffer+=1
 		
 	#jumping with coyote time
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and !crouching:
 		jump_buffer = 0
 		if !has_jumped and coyote_jump_buffer < JUMP_BUFFER_MAX:
 			coyote_jump_buffer = JUMP_BUFFER_MAX
-			has_jumped = true
-			motion.y = -JUMP_SPEED
-			new_anim = "jump_inital"
-			dust_particle()
+			jump()
 	coyote_jump_buffer+=1
 
 	#if we release the jump key while rising then cut off the jump
@@ -147,7 +169,7 @@ func _physics_process(delta):
 			friction = false
 		else:
 			friction = true
-			
+		
 	#random dust particles when moving
 	if is_on_floor():
 		if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
@@ -161,6 +183,40 @@ func _physics_process(delta):
 	else:
 		if friction and motion.x != 0:
 			motion.x = lerp(motion.x, 0, AIR_FRICTION)
+			
+	#ladders (INCREDIBLY CURSED)
+	if current_ladder != null:
+		# only grab the ladder if we press up or down or if we havent just jumped on the ladder
+		if Input.is_action_pressed("move_down") or (Input.is_action_pressed("move_up") and !ladder_jump):
+			#put us at the center of the ladder
+			global_position.x = lerp(global_position.x, current_ladder.global_position.x+7, 0.3)
+			on_ladder = true
+		elif is_on_floor():
+			on_ladder = false
+	else:
+		on_ladder = false
+	if ladder_jump and motion.y > -100 and motion.y < 100:
+		ladder_jump = false
+	if on_ladder:
+		if !is_on_floor():
+			new_anim = "climb"
+		if Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up"):
+			$Sprite.speed_scale = 1
+		else:
+			$Sprite.frame = 4
+			$Sprite.speed_scale = 0
+		motion.x = 0
+		motion.y = 0
+		if Input.is_action_pressed("move_down"):
+			motion.y = MAX_SPEED/1.5
+		elif Input.is_action_pressed("move_up"):
+			motion.y = -MAX_SPEED/1.5
+		if Input.is_action_just_pressed("jump"):
+			jump()
+			ladder_jump = true
+			on_ladder = false
+	else:
+		$Sprite.speed_scale = 1
 
 func _process(delta):
 	#play animation
@@ -203,6 +259,10 @@ func _process(delta):
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "squash":
 		new_anim = "idle"
+	if $Sprite.animation == "to_crouch":
+		new_anim = "crouching"
+	if $Sprite.animation == "look_up":
+		new_anim = "looking_up"
 		
 func dust_particle():
 	var dust_particle = DUST_PARTICLE.instance()
@@ -238,3 +298,18 @@ func damage(damage, knockback_dir):
 	_damage_num.text = str(damage_calculation)
 	_damage_num.hit = self
 	get_parent().add_child(_damage_num)
+
+func jump():
+	has_jumped = true
+	motion.y = -JUMP_SPEED
+	new_anim = "jump_inital"
+	if is_on_floor():
+		dust_particle()
+
+func _on_LadderRadius_area_entered(area):
+	if area.name == "Ladder":
+		current_ladder = area
+
+func _on_LadderRadius_area_exited(area):
+	if area.name == "Ladder":
+		current_ladder = null

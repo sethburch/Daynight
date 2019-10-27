@@ -1,5 +1,9 @@
 extends Camera2D
 
+enum MODES {CURSOR, PEEK_DOWN, PEEK_UP}
+
+var mode = MODES.CURSOR
+
 var _duration = 0.0
 var _period_in_ms = 0.0
 var _amplitude = 0.0
@@ -18,8 +22,17 @@ func _process(delta):
 #		offset.x = lerp(offset.x, -50, 0.01)
 #	if get_parent().player_dir ==  1:
 #		offset.x = lerp(offset.x, 50, 0.01)
-		
-	offset = lerp(offset, lerp(Vector2(0,0), get_local_mouse_position(), 0.3), 0.1)
+	
+	var offset_to
+	match mode:
+		MODES.CURSOR:
+			offset_to = get_local_mouse_position()
+		MODES.PEEK_DOWN:
+			offset_to = Vector2(0, 300)
+		MODES.PEEK_UP:
+			offset_to = Vector2(0, -300)
+	
+	offset = lerp(offset, lerp(Vector2(0,0), offset_to, 0.3), 0.1)
 	
 	# Only shake when there's shake time remaining.
 	if _timer == 0:
