@@ -68,8 +68,8 @@ func _physics_process(delta):
 		snap_vector = Vector2(0, 0)
 	motion = move_and_slide_with_snap(motion, snap_vector, UP, true, 4, deg2rad(46))
 	
-	#play idle if we're not landing and crouching and looking up (i promise i dont know a better way to do this)
-	if anim != "squash" and anim != "to_crouch" and anim != "looking_up" and anim != "look_up" and anim != "crouching":
+	#play idle if we're not landing and crouching and looking up (ill fix this later i promise)
+	if anim != "squash" and anim != "to_crouch" and anim != "looking_up" and anim != "look_up" and anim != "crouching" and anim != "hurting" and anim != "hurt":
 		new_anim = "idle"
 		
 	#crouching and looking up
@@ -88,11 +88,11 @@ func _physics_process(delta):
 				new_anim = "look_up"
 		else:
 			$Camera2D.mode = $Camera2D.MODES.CURSOR
-			new_anim = "idle"
+			#new_anim = "idle"
 			crouching = false
 	else:
 		$Camera2D.mode = $Camera2D.MODES.CURSOR
-		new_anim = "idle"
+		#new_anim = "idle"
 		crouching = false
 	
 	#play landing animation when hitting ground
@@ -186,6 +186,9 @@ func _physics_process(delta):
 			
 	#ladders (INCREDIBLY CURSED)
 	if current_ladder != null:
+		#knock us off the ladder if we get hit
+		if hit_time >= 0:
+			on_ladder = false
 		# only grab the ladder if we press up or down or if we havent just jumped on the ladder
 		if Input.is_action_pressed("move_down") or (Input.is_action_pressed("move_up") and !ladder_jump):
 			#put us at the center of the ladder
@@ -236,8 +239,11 @@ func _process(delta):
 		get_tree().reload_current_scene()
 		
 	if hit_time >= 0:
+		if anim != "hurt" and anim != "hurting":
+			new_anim = "hurt"
 		hit_time+=1
 		if hit_time > i_frames:
+			new_anim = "idle"
 			modulate = Color(1, 1, 1, 1)
 			hit_time = -1
 		
@@ -263,6 +269,8 @@ func _on_Sprite_animation_finished():
 		new_anim = "crouching"
 	if $Sprite.animation == "look_up":
 		new_anim = "looking_up"
+	if $Sprite.animation == "hurt":
+		new_anim = "hurting"
 		
 func dust_particle():
 	var dust_particle = DUST_PARTICLE.instance()

@@ -13,11 +13,13 @@ var tome_sprites = [preload("../sprites/tomes/book_beam.png"),
 					preload("../sprites/tomes/book_sine.png"),
 					preload("../sprites/tomes/defense_book.png")]
 
-export(Array) var school = [preload("../scenes/SpellFire.tscn"),
-							preload("../scenes/SpellIce.tscn"),
-							preload("../scenes/SpellLightning.tscn")]
+var school : Array = [preload("../scenes/SpellFire.tscn"),
+					  preload("../scenes/SpellIce.tscn"),
+					  preload("../scenes/SpellLightning.tscn")]
 
-export(PackedScene) var current_school = school[0]
+export(bool) var is_random = true
+export(int) var school_num = 0
+var current_school = school[school_num]
 export(int) var current_movement = MOVEMENT.BEAM
 
 var tome_name = ""
@@ -29,8 +31,11 @@ func _ready():
 	add_to_group("Tome")
 	$Sprites/AnimationPlayer.play("tome_float")
 	
-	current_school = school[randi() % school.size()]
-	current_movement = randi() % MOVEMENT.size()
+	if is_random:
+		current_school = school[randi() % school.size()]
+		current_movement = randi() % MOVEMENT.size()
+	else:
+		current_school = school[school_num]
 	
 	tome_name = current_school.instance().spell_name + " Tome of " + move_names[current_movement]
 	this_tome_color = current_school.instance().spell_color
