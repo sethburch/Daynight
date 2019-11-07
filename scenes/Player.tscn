@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Stats.gd" type="Script" id=2]
@@ -6,22 +6,22 @@
 [ext_resource path="res://sprites/player/idle/idle01.png" type="Texture" id=4]
 [ext_resource path="res://sprites/player/idle/idle02.png" type="Texture" id=5]
 [ext_resource path="res://sprites/player/jump/jump07.png" type="Texture" id=6]
-[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player/move/run01.png" type="Texture" id=9]
-[ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=10]
-[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=11]
-[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=12]
-[ext_resource path="res://sprites/player/jump/jump01.png" type="Texture" id=13]
-[ext_resource path="res://sprites/player/jump/jump02.png" type="Texture" id=14]
-[ext_resource path="res://sprites/player/move/run02.png" type="Texture" id=15]
-[ext_resource path="res://sprites/player/move/run03.png" type="Texture" id=16]
-[ext_resource path="res://sprites/player/move/run04.png" type="Texture" id=17]
-[ext_resource path="res://sprites/player/move/run05.png" type="Texture" id=18]
-[ext_resource path="res://sprites/player/move/run06.png" type="Texture" id=19]
-[ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=20]
-[ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=21]
-[ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=22]
+[ext_resource path="res://sprites/player/jump/jump01.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/jump/jump02.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/move/run02.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/move/run03.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/move/run04.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/move/run05.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/move/run06.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=15]
+[ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=16]
+[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=17]
+[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=18]
+[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=19]
+[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=20]
+[ext_resource path="res://sprites/player/move/run01.png" type="Texture" id=21]
+[ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=22]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=23]
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=24]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=25]
@@ -43,35 +43,35 @@ animations = [ {
 "name": "squash",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "jump_peak",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "run_inital",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "jump_inital",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "jump_fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "jump_rise",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "jump_inital",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "jump_fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "run_inital",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "jump_inital",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -80,7 +80,13 @@ extents = Vector2( 2.99506, 9.05246 )
 [sub_resource type="CircleShape2D" id=3]
 radius = 20.614
 
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 12.8899
+height = 2.22655
+
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 33
+collision_mask = 33
 script = ExtResource( 1 )
 
 [node name="Stats" type="Node2D" parent="."]
@@ -102,13 +108,13 @@ drag_margin_left = 0.1
 drag_margin_top = 0.1
 drag_margin_right = 0.1
 drag_margin_bottom = 0.1
-script = ExtResource( 23 )
+script = ExtResource( 40 )
 
 [node name="Cast" type="Position2D" parent="."]
 position = Vector2( 16, 2 )
 
 [node name="Inventory" type="Area2D" parent="."]
-script = ExtResource( 24 )
+script = ExtResource( 41 )
 
 [node name="PickupRadius" type="CollisionShape2D" parent="Inventory"]
 position = Vector2( 0, 4 )
@@ -116,7 +122,7 @@ shape = SubResource( 3 )
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="GUI" parent="GUILayer" instance=ExtResource( 25 )]
+[node name="GUI" parent="GUILayer" instance=ExtResource( 42 )]
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 
@@ -127,7 +133,7 @@ editor/display_folded = true
 motion_scale = Vector2( 0, 0 )
 
 [node name="BG" type="Sprite" parent="ParallaxBackground/Sky"]
-texture = ExtResource( 26 )
+texture = ExtResource( 43 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 270 )
 
@@ -135,7 +141,7 @@ region_rect = Rect2( 0, 0, 1920, 270 )
 motion_scale = Vector2( 0.1, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource( 27 )
+texture = ExtResource( 44 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 270 )
 
@@ -143,7 +149,7 @@ region_rect = Rect2( 0, 0, 1920, 270 )
 motion_scale = Vector2( 0.2, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource( 28 )
+texture = ExtResource( 45 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 270 )
 
@@ -151,7 +157,7 @@ region_rect = Rect2( 0, 0, 1920, 270 )
 motion_scale = Vector2( 0.3, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource( 29 )
+texture = ExtResource( 46 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 270 )
 
@@ -159,8 +165,16 @@ region_rect = Rect2( 0, 0, 1920, 270 )
 motion_scale = Vector2( 0.4, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource( 30 )
+texture = ExtResource( 47 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 270 )
+
+[node name="LadderRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderRadius"]
+position = Vector2( 0, 2 )
+shape = SubResource( 4 )
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="area_entered" from="Inventory" to="Inventory" method="_on_Inventory_area_entered"]
+[connection signal="area_entered" from="LadderRadius" to="." method="_on_LadderRadius_area_entered"]
+[connection signal="area_exited" from="LadderRadius" to="." method="_on_LadderRadius_area_exited"]

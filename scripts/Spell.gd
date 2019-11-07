@@ -85,7 +85,7 @@ func _initial_cast():
 func _physics_process(delta):
 	match move:
 		MOVEMENT.BEAM:
-			velocity.x = dir.x * SPEED
+			velocity = dir * SPEED#velocity.x = dir.x * SPEED
 		MOVEMENT.ARC:
 			velocity.y += (SPEED/GRAVITY)
 		MOVEMENT.BOUNCE:
@@ -131,7 +131,7 @@ func _spell_finish():
 	$Sound.pitch_scale = rand_range(0.9, 1.1)
 	$Sound.play()
 	
-	get_node("..").screen_shake(.2, 15, 8)
+	#get_node("..").screen_shake(.2, 15, 8)
 	$Particles/Inner.emitting = false
 	$Particles/Outer.emitting = false
 	var explosion = explosion_particle.instance()

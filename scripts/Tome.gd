@@ -38,3 +38,6 @@ func _ready():
 	
 	$Sprites/Aura.modulate = this_tome_color
 	$Sprites/Tome.texture = this_tome_sprite
+	
+func remove():
+	get_parent().remove_child(self)

@@ -4,6 +4,3 @@
 
 [node name="LURD" instance=ExtResource( 1 )]
 script = null
-
-[node name="TileMap" parent="." index="0"]
-tile_data = PoolIntArray(  )
