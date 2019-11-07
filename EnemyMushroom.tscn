@@ -102,7 +102,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 5
+frame = 3
 playing = true
 
 [node name="Explosion" type="Sprite" parent="."]
