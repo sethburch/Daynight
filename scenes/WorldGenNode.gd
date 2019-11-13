@@ -14,6 +14,7 @@ export(bool) var down = false
 
 ########generate a random inherited node
 func _ready():
+	print_debug("created " + str(self))
 	#get everything in the folder and pick a random one
 	var path = filename.trim_suffix(".tscn")
 	var nodes = list_files_in_directory(path)
@@ -33,8 +34,8 @@ func _ready():
 					_grass.global_position = Vector2((i.x*16)+global_position.x, ((i.y-1)*16)+global_position.y)
 					get_parent().add_child(_grass)
 			#set tilemap to global tilemap
-			get_parent().get_node("TileMap").set_cell(i.x+(global_position.x/16), i.y+(global_position.y/16), 1)
-		get_parent().add_child(inst)
+			get_parent().get_parent().get_node("TileMap").set_cell(i.x+(global_position.x/16), i.y+(global_position.y/16), 1)
+		get_parent().get_parent().add_child(inst)
 		inst.remove_child(inst.get_node("TileMap"))
 
 	queue_free()

@@ -36,6 +36,8 @@ var next_node = null
 var current_col = 0
 var current_row = 0
 
+var cur_chunk = 0
+
 var node_height = 320
 var node_width = 464
 export(int) var height = 2
@@ -57,7 +59,7 @@ func _ready():
 	#place start node
 	var sn = start_node.instance()
 	sn.global_position = current_coords
-	add_child(sn)
+	#add_child(sn)
 	
 	#add start node to map
 	previous_node = current_node
@@ -208,7 +210,7 @@ func _ready():
 		#pick a random one from the options
 		next_node = current_nodes_array[randi() % current_nodes_array.size()]
 		next_node.global_position = current_coords
-		add_child(next_node)
+		#add_child(next_node)
 		current_nodes_array.clear()
 		
 		#update map
@@ -240,11 +242,10 @@ func _ready():
 			if map[i][j] == null:
 				var wn = wall_node.instance()
 				wn.global_position = Vector2((j)*node_width, (i)*node_height)
-				add_child(wn)
+				#add_child(wn)
 				map[i][j] = wn
 				
-	#update tilemap
-	$TileMap.update_bitmask_region()
+
 
 func create_branch(x, y, dir):
 	exclude_paths.clear()
@@ -326,7 +327,7 @@ func create_branch(x, y, dir):
 		next_node = current_nodes_array[randi() % current_nodes_array.size()]
 		next_node.global_position = Vector2((x)*node_width, (y)*node_height)
 		#next_node.modulate = Color(1, 0, 0)
-		add_child(next_node)
+		#add_child(next_node)
 		map[y][x] = next_node
 	current_nodes_array.clear()
 	
@@ -354,10 +355,26 @@ func create_2d_array(width, height, value):
         for x in range(width):
             a[y][x] = value
     return a
+
+func remove_chunks():
+	for i in $MapNodes.get_children():
+		remove_child(i)
 	
+func load_chunks():
+	for x in [0, height-1]:
+		for y in [0+cur_chunk, 1+cur_chunk, 2+cur_chunk]:
+			print_debug("x: " + str(x) + " y: " + str(y))
+			var _n = map[x][y]
+			print_debug(_n)
+			_n.global_position = Vector2(y*node_width, x*node_height)
+			$MapNodes.add_child(_n)
+	#update tilemap
+	$TileMap.update_bitmask_region()
 	
 ######### DEBUG
 func _process(delta):
+	
+	
 	if Input.is_action_pressed("move_up"):
 		$Camera2D.offset.y -= 20
 	if Input.is_action_pressed("move_down"):
@@ -371,4 +388,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("scroll_down"):
 		$Camera2D.zoom -= Vector2(0.5, 0.5)
 	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
+		remove_chunks()
+		load_chunks()
+		cur_chunk+=3
