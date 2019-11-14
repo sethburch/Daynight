@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,22 @@
 [ext_resource path="res://GrassTileset2.tres" type="TileSet" id=4]
 [ext_resource path="res://scenes/Platform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Ladder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/SnowFallBottomTileset.tres" type="TileSet" id=7]
+[ext_resource path="res://scenes/SnowFallTileset.tres" type="TileSet" id=8]
+[ext_resource path="res://scenes/RainSplashTexture.tres" type="Texture" id=9]
+[ext_resource path="res://scenes/RainTileset.tres" type="TileSet" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "RainSplashTexture.tres 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
 
 [node name="World" type="Node"]
 script = ExtResource( 1 )
@@ -46,3 +62,27 @@ position = Vector2( -400, 640 )
 [node name="Ladder" parent="." instance=ExtResource( 6 )]
 position = Vector2( -352, 432 )
 scale = Vector2( 1, 16 )
+
+[node name="SnowBottom" type="TileMap" parent="."]
+tile_set = ExtResource( 7 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="SnowTop" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 9 )
+
+[node name="Rain" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="RainSplash" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 4, 4 )
+format = 1
+tile_data = PoolIntArray( 6881318, 0, 0 )
