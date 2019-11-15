@@ -39,7 +39,7 @@ func _physics_process(delta):
 	if collision.collider == null:
 		return
 	if collision.collider.is_in_group("Player"):
-		collision.collider.damage(DAMAGE, collision.position - position)
+		collision.collider.damage(DAMAGE, (collision.position - position).normalized())
 
 func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	#do knockback
@@ -76,7 +76,7 @@ func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	
 func _process(delta):
 	if health <= 0:
-		var sound = get_node("../WorldSound")
+		var sound = get_parent().get_parent().get_parent().get_node("../WorldSound")
 		sound.stream = death_sound
 		sound.pitch_scale = rand_range(0.9, 1.1)
 		sound.play()

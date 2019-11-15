@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/Spell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/SpellFire.gd" type="Script" id=2]
+[ext_resource path="res://FlickeringLight.tscn" type="PackedScene" id=3]
 
 [node name="SpellFire" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -9,3 +10,7 @@ TRAVEL_TIME = 4
 DAMAGE = 10
 CRIT_CHANCE = 0.1
 CAN_DOT = true
+
+[node name="FlickeringLight" parent="." index="0" instance=ExtResource( 3 )]
+visible = true
+color = Color( 0.980392, 0.494118, 0.305882, 1 )

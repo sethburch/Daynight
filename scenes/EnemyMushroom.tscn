@@ -97,12 +97,13 @@ radius = 203.854
 
 [node name="EnemyMushroom" type="KinematicBody2D"]
 script = ExtResource( 1 )
+health = 20
 
 [node name="Body" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 5
+frame = 4
 playing = true
 
 [node name="Explosion" type="Sprite" parent="."]

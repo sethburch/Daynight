@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 var anim = ""
 var new_anim = ""
 
-onready var player = get_node("../Player")
+#onready var player = get_parent().get_parent().get_parent().get_node("Player")
 onready var detectionRadius = get_node("PlayerDetect")
 
 func _ready():
@@ -25,27 +25,8 @@ func _physics_process(delta):
 	if anim != "Land":
 		new_anim = "Idle"
 	
-	if detectionRadius.overlaps_body(player):
-		target = player.get_global_position()
-		if waitTimer > 0:
-			waitTimer = 0
-			jumpTimer = 20
-		angry = true
-	elif waitTimer < 1:
-		angry = false
-		var tempRand = rng.randi_range(0, 20)
-		if tempRand == 20:
-			target = Vector2(global_position.x + speed, global_position.y + speed)
-		elif tempRand == 19:
-			target = Vector2(global_position.x - speed, global_position.y + speed)
-		elif tempRand > 12:
-			target = Vector2(global_position.x + (speed-25), global_position.y)
-		elif tempRand > 6:
-			target = Vector2(global_position.x - (speed-25), global_position.y)
-		else:
-			target = Vector2(global_position.x, global_position.y + 20)
-	else:
-		angry = false
+	#if detectionRadius
+		
 	
 	motion.y += GRAVITY
 	
@@ -89,3 +70,27 @@ func chase():
 func _on_BodySprite_animation_finished():
 	if $BodySprite.animation == "Land":
 		new_anim = "Idle"
+		
+func _on_PlayerDetect_body_entered(body):
+	if body.is_in_group("Player"):
+		target = body.get_global_position()
+		if waitTimer > 0:
+			waitTimer = 0
+			jumpTimer = 20
+		angry = true
+	elif waitTimer < 1:
+		angry = false
+		var tempRand = rng.randi_range(0, 20)
+		if tempRand == 20:
+			target = Vector2(global_position.x + speed, global_position.y + speed)
+		elif tempRand == 19:
+			target = Vector2(global_position.x - speed, global_position.y + speed)
+		elif tempRand > 12:
+			target = Vector2(global_position.x + (speed-25), global_position.y)
+		elif tempRand > 6:
+			target = Vector2(global_position.x - (speed-25), global_position.y)
+		else:
+			target = Vector2(global_position.x, global_position.y + 20)
+	else:
+		angry = false
+		

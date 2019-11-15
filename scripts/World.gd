@@ -1,5 +1,7 @@
 extends Node
 
+enum cycle_state { NIGHT, DAWN, DAY, DUSK }
+
 func _ready():
 	randomize()
 	for i in range(-100, 100):
@@ -22,3 +24,17 @@ func _process(delta):
 		
 func screen_shake(duration, frequency, amplitude):
 	get_node("Player/Camera2D").shake(duration, frequency, amplitude)
+
+func _on_DayNightCycle2_time(cycle):
+	if cycle == cycle_state.NIGHT:
+		$Player/FlickeringLight.visible = true
+
+	if cycle == cycle_state.DAWN:
+		$Player/FlickeringLight.visible = false
+		$SeasonController.start()
+
+	if cycle == cycle_state.DAY:
+		$Player/FlickeringLight.visible = false
+
+	if cycle == cycle_state.DUSK:
+		$Player/FlickeringLight.visible = false

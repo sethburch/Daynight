@@ -5,6 +5,8 @@ onready var viewport = get_viewport()
 var scale = 1
 var window_size = OS.get_window_size()
 
+var DayNight
+var Moon
 
 func _ready():
 	get_tree().connect("screen_resized", self, "_screen_resized")

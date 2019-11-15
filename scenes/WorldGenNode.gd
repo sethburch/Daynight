@@ -35,17 +35,19 @@ func _ready():
 					get_parent().add_child(_grass)
 			#set tilemap to global tilemap
 			get_parent().get_parent().get_node("TileMap").set_cell(i.x+(global_position.x/16), i.y+(global_position.y/16), 1)
-		get_parent().get_parent().add_child(inst)
+		get_parent().add_child(inst)
 		inst.remove_child(inst.get_node("TileMap"))
-
-	queue_free()
+	$TileMap.visible = false
+	remove_child(self)
 	
 ##########generate base nodes
 #func _ready():
+#	#$TileMap.visible = false
 #	for i in $TileMap.get_used_cells():
-#		get_parent().get_node("TileMap").set_cell(i.x+(global_position.x/16), i.y+(global_position.y/16), 1)
-#	get_parent().get_node("TileMap").update_bitmask_region()
-#	remove_child($TileMap)
+#		get_parent().get_parent().get_node("TileMap").set_cell(i.x+(global_position.x/16), i.y+(global_position.y/16), 1)
+#	$TileMap.visible = false
+	#get_parent().get_parent().get_node("TileMap").update_bitmask_region()
+	#remove_child($TileMap)
 		
 func list_files_in_directory(path):
     var files = []

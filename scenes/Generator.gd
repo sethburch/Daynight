@@ -2,6 +2,8 @@ extends Node2D
 
 enum P {L, U, R, D}
 
+var player_inital_x
+
 var world_nodes = [
 	preload("res://world_gen_nodes/LD.tscn"),
 	preload("res://world_gen_nodes/LR.tscn"),
@@ -46,6 +48,7 @@ export(int) var width = 100
 var map = null
 
 func _ready():
+#	player_inital_x = $Player.global_position.x
 	randomize()
 	#create map array
 	map = create_2d_array(width, height, null)
@@ -59,14 +62,15 @@ func _ready():
 	#place start node
 	var sn = start_node.instance()
 	sn.global_position = current_coords
-	#add_child(sn)
+	$MapNodes.add_child(sn)
 	
 	#add start node to map
 	previous_node = current_node
-	map[current_col][current_row] = sn
+	map[current_node.y][current_node.x] = sn
 	
 	#start node always goes right
 	var main_path_dir = 2
+	current_col+=1
 	
 	main_path_array.append(current_node)
 			
@@ -210,7 +214,7 @@ func _ready():
 		#pick a random one from the options
 		next_node = current_nodes_array[randi() % current_nodes_array.size()]
 		next_node.global_position = current_coords
-		#add_child(next_node)
+		$MapNodes.add_child(next_node)
 		current_nodes_array.clear()
 		
 		#update map
@@ -242,9 +246,22 @@ func _ready():
 			if map[i][j] == null:
 				var wn = wall_node.instance()
 				wn.global_position = Vector2((j)*node_width, (i)*node_height)
-				#add_child(wn)
+				$MapNodes.add_child(wn)
 				map[i][j] = wn
+	
+	for i in height+1:
+		var wn = wall_node.instance()
+		wn.global_position = Vector2((-1)*node_width, (i)*node_height)
+		$MapNodes.add_child(wn)
+	for i in width:
+		var wn = wall_node.instance()
+		wn.global_position = Vector2((i)*node_width, (2)*node_height)
+		$MapNodes.add_child(wn)
+
 				
+#	# load it in!
+#	initial_load_chunks()
+	$TileMap.update_bitmask_region()
 
 
 func create_branch(x, y, dir):
@@ -327,7 +344,7 @@ func create_branch(x, y, dir):
 		next_node = current_nodes_array[randi() % current_nodes_array.size()]
 		next_node.global_position = Vector2((x)*node_width, (y)*node_height)
 		#next_node.modulate = Color(1, 0, 0)
-		#add_child(next_node)
+		$MapNodes.add_child(next_node)
 		map[y][x] = next_node
 	current_nodes_array.clear()
 	
@@ -358,11 +375,24 @@ func create_2d_array(width, height, value):
 
 func remove_chunks():
 	for i in $MapNodes.get_children():
-		remove_child(i)
+		$MapNodes.remove_child(i)
+	#$TileMap.clear()
 	
 func load_chunks():
 	for x in [0, height-1]:
-		for y in [0+cur_chunk, 1+cur_chunk, 2+cur_chunk]:
+		#for y in [2+cur_chunk]:
+			#print_debug("x: " + str(x) + " y: " + str(y))
+		var y = 2+cur_chunk
+		var _n = map[x][y]
+			#print_debug(_n)
+		_n.global_position = Vector2(y*node_width, x*node_height)
+		$MapNodes.add_child(_n)
+	#update tilemap
+	$TileMap.update_bitmask_region()
+	
+func initial_load_chunks():
+	for x in [0, height-1]:
+		for y in [0+cur_chunk, 1+cur_chunk]:
 			print_debug("x: " + str(x) + " y: " + str(y))
 			var _n = map[x][y]
 			print_debug(_n)
@@ -370,11 +400,11 @@ func load_chunks():
 			$MapNodes.add_child(_n)
 	#update tilemap
 	$TileMap.update_bitmask_region()
-	
+
+var previous_load = -1
+
 ######### DEBUG
 func _process(delta):
-	
-	
 	if Input.is_action_pressed("move_up"):
 		$Camera2D.offset.y -= 20
 	if Input.is_action_pressed("move_down"):
@@ -387,8 +417,14 @@ func _process(delta):
 		$Camera2D.zoom += Vector2(0.5, 0.5)
 	if Input.is_action_just_pressed("scroll_down"):
 		$Camera2D.zoom -= Vector2(0.5, 0.5)
-	if Input.is_action_just_pressed("reset"):
-		#get_tree().reload_current_scene()
-		remove_chunks()
-		load_chunks()
-		cur_chunk+=3
+##	if Input.is_action_just_pressed("reset"):
+#		#get_tree().reload_current_scene()
+#	if (int($Camera2D.offset.x)) % node_width == 0 and previous_load != int($Camera2D.offset.x):
+#		#remove_chunks()
+#		previous_load = int($Camera2D.offset.x)
+#		load_chunks()
+#		cur_chunk+=1
+#	if Input.is_action_just_pressed("reset"):
+#		load_chunks()
+#		cur_chunk+=1
+	pass
