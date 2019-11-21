@@ -1,7 +1,7 @@
 extends Node2D
 
 enum schools  {fire, ice, lightning, last}
-enum stats {size, damage, speed, critchance, wavyness, featheryness, last}
+enum stats {speed, size, damage, cost, time, last}
 
 var schoolstats = []
 

@@ -11,35 +11,35 @@
 [ext_resource path="res://sprites/player/crouch/crouching_idle4.png" type="Texture" id=9]
 [ext_resource path="res://sprites/player/crouch/crouching_idle5.png" type="Texture" id=10]
 [ext_resource path="res://sprites/player/jump/jump07.png" type="Texture" id=11]
-[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=12]
-[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=13]
-[ext_resource path="res://sprites/player/hurt/hurt2.png" type="Texture" id=14]
-[ext_resource path="res://sprites/player/hurt/hurt3.png" type="Texture" id=15]
-[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=16]
-[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=17]
-[ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=18]
-[ext_resource path="res://sprites/player/look_up/look_up2.png" type="Texture" id=19]
-[ext_resource path="res://sprites/player/look_up/look_up3.png" type="Texture" id=20]
-[ext_resource path="res://sprites/player/crouch/to_crouching2.png" type="Texture" id=21]
-[ext_resource path="res://sprites/player/crouch/to_crouching3.png" type="Texture" id=22]
-[ext_resource path="res://sprites/player/crouch/to_crouching4.png" type="Texture" id=23]
-[ext_resource path="res://sprites/player/crouch/to_crouching5.png" type="Texture" id=24]
-[ext_resource path="res://sprites/player/jump/jump01.png" type="Texture" id=25]
-[ext_resource path="res://sprites/player/jump/jump02.png" type="Texture" id=26]
-[ext_resource path="res://sprites/player/climb/climb1.png" type="Texture" id=27]
-[ext_resource path="res://sprites/player/climb/climb2.png" type="Texture" id=28]
-[ext_resource path="res://sprites/player/climb/climb3.png" type="Texture" id=29]
-[ext_resource path="res://sprites/player/climb/climb4.png" type="Texture" id=30]
-[ext_resource path="res://sprites/player/climb/climb5.png" type="Texture" id=31]
-[ext_resource path="res://sprites/player/climb/climb6.png" type="Texture" id=32]
-[ext_resource path="res://sprites/player/move/run02.png" type="Texture" id=33]
-[ext_resource path="res://sprites/player/move/run03.png" type="Texture" id=34]
-[ext_resource path="res://sprites/player/move/run04.png" type="Texture" id=35]
-[ext_resource path="res://sprites/player/move/run05.png" type="Texture" id=36]
-[ext_resource path="res://sprites/player/move/run06.png" type="Texture" id=37]
-[ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=38]
-[ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=39]
-[ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=40]
+[ext_resource path="res://sprites/player/look_up/look_up2.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/look_up/look_up3.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/move/run02.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/move/run03.png" type="Texture" id=15]
+[ext_resource path="res://sprites/player/move/run04.png" type="Texture" id=16]
+[ext_resource path="res://sprites/player/move/run05.png" type="Texture" id=17]
+[ext_resource path="res://sprites/player/move/run06.png" type="Texture" id=18]
+[ext_resource path="res://sprites/player/move/run07.png" type="Texture" id=19]
+[ext_resource path="res://sprites/player/move/run08.png" type="Texture" id=20]
+[ext_resource path="res://sprites/player/move/run09.png" type="Texture" id=21]
+[ext_resource path="res://sprites/player/hurt/hurt2.png" type="Texture" id=22]
+[ext_resource path="res://sprites/player/hurt/hurt3.png" type="Texture" id=23]
+[ext_resource path="res://sprites/player/jump/jump03.png" type="Texture" id=24]
+[ext_resource path="res://sprites/player/jump/jump04.png" type="Texture" id=25]
+[ext_resource path="res://sprites/player/climb/climb1.png" type="Texture" id=26]
+[ext_resource path="res://sprites/player/climb/climb2.png" type="Texture" id=27]
+[ext_resource path="res://sprites/player/climb/climb3.png" type="Texture" id=28]
+[ext_resource path="res://sprites/player/climb/climb4.png" type="Texture" id=29]
+[ext_resource path="res://sprites/player/climb/climb5.png" type="Texture" id=30]
+[ext_resource path="res://sprites/player/climb/climb6.png" type="Texture" id=31]
+[ext_resource path="res://sprites/player/jump/jump05.png" type="Texture" id=32]
+[ext_resource path="res://sprites/player/jump/jump06.png" type="Texture" id=33]
+[ext_resource path="res://sprites/player/jump/jump00.png" type="Texture" id=34]
+[ext_resource path="res://sprites/player/crouch/to_crouching2.png" type="Texture" id=35]
+[ext_resource path="res://sprites/player/crouch/to_crouching3.png" type="Texture" id=36]
+[ext_resource path="res://sprites/player/crouch/to_crouching4.png" type="Texture" id=37]
+[ext_resource path="res://sprites/player/crouch/to_crouching5.png" type="Texture" id=38]
+[ext_resource path="res://sprites/player/jump/jump01.png" type="Texture" id=39]
+[ext_resource path="res://sprites/player/jump/jump02.png" type="Texture" id=40]
 [ext_resource path="res://sprites/player/move/run01.png" type="Texture" id=41]
 [ext_resource path="res://scripts/Camera2D.gd" type="Script" id=42]
 [ext_resource path="res://scripts/Inventory.gd" type="Script" id=43]
@@ -70,58 +70,58 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "jump_peak",
+"name": "look_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "hurt",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": true,
-"name": "jump_fall",
+"name": "jump_peak",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "jump_inital",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "look_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
-"loop": true,
-"name": "to_crouch",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "jump_rise",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "hurting",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ) ],
-"loop": true,
-"name": "looking_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "climb",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
-"name": "run",
+"name": "looking_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "jump_fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ) ],
+"loop": true,
+"name": "jump_inital",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "to_crouch",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "hurting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "jump_rise",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 41 ) ],
 "loop": true,

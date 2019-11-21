@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Tome.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/RainTileset.tres" type="TileSet" id=11]
 [ext_resource path="res://scenes/RainSplashTexture.tres" type="Texture" id=12]
 [ext_resource path="res://scenes/SeasonController.gd" type="Script" id=13]
+[ext_resource path="res://scenes/Slime.tscn" type="PackedScene" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RainSplashTexture.tres 0"
@@ -114,6 +115,10 @@ state_transition_duration = 5.0
 
 [node name="SeasonController" type="Node2D" parent="."]
 script = ExtResource( 13 )
+
+[node name="Slime" parent="." instance=ExtResource( 14 )]
+
+[node name="Slime2" parent="." instance=ExtResource( 14 )]
 [connection signal="time" from="DayNightCycle2" to="." method="_on_DayNightCycle2_time"]
 
 [editable path="Player"]
