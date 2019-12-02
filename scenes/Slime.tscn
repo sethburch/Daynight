@@ -22,6 +22,11 @@
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
 "name": "Land",
 "speed": 8.0
 }, {
@@ -55,7 +60,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "LookSide",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -78,7 +83,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "LookUp",
+"name": "Idle",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ) ],

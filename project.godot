@@ -42,19 +42,12 @@ config/name="Daynight"
 run/main_scene="res://scenes/World.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Global="*res://Global.gd"
-
 [display]
 
-window/size/width=480
-window/size/height=270
-window/size/test_width=1440
-window/size/test_height=810
-mouse_cursor/custom_image="res://cursor_sprite.png"
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/size/width=1280
+window/size/height=720
+window/size/test_width=1280
+window/size/test_height=720
 
 [importer_defaults]
 
@@ -164,9 +157,8 @@ scroll_down={
 
 [physics]
 
-common/physics_jitter_fix=0.0
+common/physics_jitter_fix=2.0
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

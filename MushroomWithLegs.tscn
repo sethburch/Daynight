@@ -1,0 +1,83 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://MushroomWithLegs.gd" type="Script" id=1]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode5.png" type="Texture" id=6]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode6.png" type="Texture" id=7]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode7.png" type="Texture" id=8]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode8.png" type="Texture" id=9]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode9.png" type="Texture" id=10]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode10.png" type="Texture" id=11]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode11.png" type="Texture" id=12]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode12.png" type="Texture" id=13]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode13.png" type="Texture" id=14]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode14.png" type="Texture" id=15]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode15.png" type="Texture" id=16]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode16.png" type="Texture" id=17]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode17.png" type="Texture" id=18]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode18.png" type="Texture" id=19]
+[ext_resource path="res://sprites/leg mushroom explosion/legsexplode19.png" type="Texture" id=20]
+[ext_resource path="res://sprites/shroomwithlegs/shroomwithlegs1.png" type="Texture" id=21]
+[ext_resource path="res://sprites/shroomwithlegs/shroomwithlegs2.png" type="Texture" id=22]
+[ext_resource path="res://sprites/shroomwithlegs/shroomwithlegs3.png" type="Texture" id=23]
+[ext_resource path="res://sprites/shroomwithlegs/shroomwithlegs4.png" type="Texture" id=24]
+[ext_resource path="res://sprites/shroomwithlegs/shroomwithlegs5.png" type="Texture" id=25]
+[ext_resource path="res://BodySprite.gd" type="Script" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "Explosion",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 21 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 9.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 180.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 35.0
+
+[node name="MushroomWithLegs" type="KinematicBody2D"]
+script = ExtResource( 1 )
+DAMAGE = 65
+DOES_CONTACT_DAMAGE = false
+
+[node name="BodySprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Explosion"
+script = ExtResource( 26 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+scale = Vector2( 1.5, 2.7 )
+shape = SubResource( 2 )
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+
+[node name="DetectionRadius" type="CollisionShape2D" parent="PlayerDetect"]
+shape = SubResource( 3 )
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+position = Vector2( 0, 20 )
+
+[node name="Explosion" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource( 4 )
+disabled = true
+[connection signal="animation_finished" from="BodySprite" to="." method="_on_BodySprite_animation_finished"]
+[connection signal="body_entered" from="ExplosionRadius" to="." method="_on_ExplosionRadius_body_entered"]
