@@ -448,3 +448,8 @@ func _on_Player_end_day():
 
 func _on_Player_next_day():
 	get_tree().paused = false
+
+func _on_CycleController_time(cycle):
+	if cycle == Global.Cycle.NIGHT:
+		get_node("Music").stream = preload("res://sound/music/haunted.wav")
+		get_node("Music").play()

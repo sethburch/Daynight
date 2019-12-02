@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/haunted.wav-7264f5cb1d51ccd442bf8865d4bacaf4.sample"
+
+[deps]
+
+source_file="res://sound/music/haunted.wav"
+dest_files=[ "res://.import/haunted.wav-7264f5cb1d51ccd442bf8865d4bacaf4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss abouta beat you.wav-57380b6dc349bb388253ee15231f8f47.sample"
+
+[deps]
+
+source_file="res://sound/music/boss abouta beat you.wav"
+dest_files=[ "res://.import/boss abouta beat you.wav-57380b6dc349bb388253ee15231f8f47.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0
