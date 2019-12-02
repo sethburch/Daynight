@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Tome.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://CycleController.tscn" type="PackedScene" id=12]
 [ext_resource path="res://SeasonController.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Leaves.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/MushroomWithLegs.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RainSplashTexture.tres 0"
@@ -100,5 +101,8 @@ tile_data = PoolIntArray( 6881318, 0, 0 )
 [node name="SeasonController" parent="." instance=ExtResource( 13 )]
 
 [node name="Leaves" parent="." instance=ExtResource( 14 )]
+
+[node name="MushroomWithLegs" parent="." instance=ExtResource( 15 )]
+position = Vector2( 261.166, 784 )
 
 [editable path="Player"]

@@ -32,7 +32,7 @@ animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "Explosion",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 21 ) ],
 "loop": true,
@@ -45,38 +45,43 @@ animations = [ {
 "speed": 9.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4.72786, 8.91929 )
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 180.0
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 35.0
+radius = 62.7447
 
 [node name="MushroomWithLegs" type="KinematicBody2D"]
 script = ExtResource( 1 )
+speed = 200
+health = 20
 DAMAGE = 65
 DOES_CONTACT_DAMAGE = false
 
 [node name="BodySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "Explosion"
+animation = "Idle"
 script = ExtResource( 26 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 6 )
 scale = Vector2( 1.5, 2.7 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="PlayerDetect" type="Area2D" parent="."]
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2( 0, -0.122087 )
 shape = SubResource( 3 )
 
 [node name="ExplosionRadius" type="Area2D" parent="."]
 position = Vector2( 0, 20 )
 
 [node name="Explosion" type="CollisionShape2D" parent="ExplosionRadius"]
+position = Vector2( 0, -18 )
 shape = SubResource( 4 )
 disabled = true
 [connection signal="animation_finished" from="BodySprite" to="." method="_on_BodySprite_animation_finished"]

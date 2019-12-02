@@ -2,7 +2,8 @@ extends Position2D
 
 var ground_enemies : Array = [
 	preload("res://scenes/Slime.tscn"),
-	preload("res://scenes/EnemyMushroom.tscn")
+	preload("res://scenes/EnemyMushroom.tscn"),
+	preload("res://scenes/MushroomWithLegs.tscn")
 ]
 var air_enemies : Array = [
 	preload("res://scenes/FireSkull.tscn")
