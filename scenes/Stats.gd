@@ -18,3 +18,9 @@ func updatestat(school, stat, increase):
 		print(school)
 		print(stat)
 		print(schoolstats[school][stat])
+		
+func updatehealth():
+	if Global.SkillPoints > 0 and get_parent().health < get_parent().MAX_HEALTH:
+		Global.SkillPoints-=1
+		get_parent().add_health(20)
+	

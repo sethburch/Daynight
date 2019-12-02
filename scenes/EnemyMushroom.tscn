@@ -103,7 +103,7 @@ health = 20
 position = Vector2( 0, -9 )
 frames = SubResource( 1 )
 animation = "idle"
-frame = 4
+frame = 6
 playing = true
 
 [node name="Explosion" type="Sprite" parent="."]

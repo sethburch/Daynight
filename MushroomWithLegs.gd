@@ -14,22 +14,22 @@ var new_anim = ""
 
 var facing_right = true
 
-onready var home = get_position()
+onready var home = get_global_position()
 onready var player = get_parent().get_parent().get_parent().get_node("../Player")
 onready var detectionRadius = get_node("PlayerDetect")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	._physics_process(delta)
-	if player == null:
-		return
+#	if player == null:
+#		return
 	$BodySprite.flip_h = facing_right
 	if detectionRadius.overlaps_body(player):
-		target = player.get_position()
+		target = player.get_global_position()
 		chase()
 		if attackTimer < 0:
 			attack()
-		elif global_position.distance_to(player.get_position()) < 50:
+		elif global_position.distance_to(player.get_global_position()) < 50:
 			attackTimer -= 1
 	elif wanderTimer < 0:
 		wander()
@@ -68,8 +68,8 @@ func chase():
 	elif target.x > global_position.x:
 		facing_right = true
 		motion.x += ACCEL
-	if (is_on_floor()) && (abs(position.x - target.x) < 80) && (target.y < position.y):
-		motion.y = speed * -2
+	if (is_on_floor()) && (abs(global_position.x - target.x) < 80) && (target.y < global_position.y):
+		motion.y = speed * -1
 
 func wander():
 	var tempRand = rng.randi_range(-100, 100)
@@ -85,8 +85,8 @@ func wander():
 		target.y = home.y + 200
 	elif target.y < home.y - 50:
 		target.y = home.y - 50
-	if (abs(target.y - position.y) < 20):
-		target.y = position.y
+	if (abs(target.y - global_position.y) < 20):
+		target.y = global_position.y
 
 func attack():
 	new_anim = "Explosion"
@@ -104,4 +104,4 @@ func _on_BodySprite_animation_finished():
 
 func _on_ExplosionRadius_body_entered(body):
 	if body.is_in_group("Player"):
-		body.damage(DAMAGE, (body.position - position).normalized() * 6)
+		body.damage(DAMAGE*time_modifier, (body.global_position - global_position).normalized() * 6)

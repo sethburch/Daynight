@@ -264,10 +264,12 @@ func _ready():
 	$TileMap.update_bitmask_region()
 	
 	#update snow and rain tilesets
-	for i in range(-200, 1000):
-		for j in range(-200, 1000):
+	for i in range(-20, 500):
+		for j in range(-20, 500):
 			$SnowBottomTile.set_cell(i, j, 0)
 			$SnowTopTile.set_cell(i, j, 0)
+	for i in range(-20, 500):
+		for j in range(-20, 500):
 			if $TileMap.get_cell(i, j) != TileMap.INVALID_CELL:
 				$RainSplashTile.set_cell((i*4), (j*4)-3, 0)
 				break

@@ -1,6 +1,7 @@
 extends Control
 
-onready var playerstats = get_parent().get_parent().get_parent().get_node("../Player/Stats");
+onready var playerstats = get_parent().get_parent().get_parent().get_node("../Player/Stats")
+onready var player = get_parent().get_parent().get_parent().get_node("../Player")
 
 func _on_firesizebutton_pressed():
 	playerstats.updatestat(playerstats.schools.fire, playerstats.stats.size, 1)
@@ -68,3 +69,7 @@ func fade_in():
 	$AnimationPlayer.play("fade_in")
 func fade_out():
 	$AnimationPlayer.play_backwards("fade_in")
+
+
+func _on_heal_pressed():
+	playerstats.updatehealth()

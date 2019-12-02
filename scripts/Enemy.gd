@@ -18,6 +18,8 @@ export(int) var speed = 100
 const MODIFIER_WEAK = 1.75
 const MODIFIER_RESIST = 0.25
 
+var time_modifier = 1
+
 var part_angle = 0
 var motion = Vector2(0, 0)
 export(float) var KNOCKBACK_AMOUNT = 100
@@ -32,6 +34,11 @@ func _ready():
 	add_to_group("Enemy")
 
 func _physics_process(delta):
+	if Global.Time == Global.Cycle.NIGHT:
+		time_modifier = 2
+	else:
+		time_modifier = 1
+	
 	if !DOES_CONTACT_DAMAGE:
 		return
 	if collision == null:
@@ -39,7 +46,7 @@ func _physics_process(delta):
 	if collision.collider == null:
 		return
 	if collision.collider.is_in_group("Player"):
-		collision.collider.damage(DAMAGE, (collision.position - position).normalized())
+		collision.collider.damage(DAMAGE*time_modifier, (collision.position - position).normalized())
 
 func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	#do knockback
@@ -79,6 +86,8 @@ func _process(delta):
 	if health <= 0:
 		#increment skill points
 		Global.EnemyKillCount+=1
+		if Global.Time == Global.Cycle.NIGHT:
+			Global.EnemyKillCount+=1
 		if Global.EnemyKillCount % 2 == 0:
 			Global.SkillPoints+=1
 		var sound = get_parent().get_parent().get_parent().get_node("../WorldSound")
