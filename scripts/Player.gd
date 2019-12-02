@@ -258,6 +258,10 @@ func _process(delta):
 			this_spell.move = $Inventory.current_tome.current_movement
 			this_spell.position = $Cast.position + position
 			this_spell.dir = (get_global_mouse_position() - position).normalized()
+			this_spell.SPEED *= 1 + (0.2 * $Stats.schoolstats[$Inventory.current_tome.school_num][$Stats.stats.speed])
+			this_spell.SIZE *= 1 + (0.2 * $Stats.schoolstats[$Inventory.current_tome.school_num][$Stats.stats.size])
+			this_spell.DAMAGE *= 1 + (0.2 * $Stats.schoolstats[$Inventory.current_tome.school_num][$Stats.stats.damage])
+			this_spell.DOT_DAMAGE *= 1 + (0.2 * $Stats.schoolstats[$Inventory.current_tome.school_num][$Stats.stats.time])
 			#this_spell.dir = Vector2(player_dir, 0)
 			this_spell.spell_owner = self
 			get_node("..").add_child(this_spell)

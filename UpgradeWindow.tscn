@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UpgradeWindow.gd" type="Script" id=1]
 [ext_resource path="res://sprites/tomes/book_beam.png" type="Texture" id=2]
@@ -6,10 +6,9 @@
 [ext_resource path="res://sprites/tomes/book_bounce.png" type="Texture" id=4]
 [ext_resource path="res://sprites/tomes/book_burst.png" type="Texture" id=5]
 [ext_resource path="res://sprites/tomes/book_sine.png" type="Texture" id=6]
-[ext_resource path="res://sprites/tomes/book_guide.png" type="Texture" id=7]
-[ext_resource path="res://sprites/ui/upgrade/fire_icon.png" type="Texture" id=8]
-[ext_resource path="res://sprites/ui/upgrade/ice_icon.png" type="Texture" id=9]
-[ext_resource path="res://sprites/ui/upgrade/lightning_icon.png" type="Texture" id=10]
+[ext_resource path="res://sprites/ui/upgrade/fire_icon.png" type="Texture" id=7]
+[ext_resource path="res://sprites/ui/upgrade/ice_icon.png" type="Texture" id=8]
+[ext_resource path="res://sprites/ui/upgrade/lightning_icon.png" type="Texture" id=9]
 
 [node name="UpgradeWindow" type="Control"]
 anchor_left = 0.5
@@ -49,7 +48,7 @@ margin_right = 31.0
 margin_bottom = 23.0
 text = "lvlup"
 
-[node name="size" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
+[node name="speed" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
 margin_left = 35.0
 margin_right = 67.0
 margin_bottom = 32.0
@@ -57,7 +56,7 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 2 )
 stretch_mode = 1
 
-[node name="damage" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
+[node name="size" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
 margin_left = 71.0
 margin_right = 103.0
 margin_bottom = 32.0
@@ -65,7 +64,7 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 3 )
 stretch_mode = 1
 
-[node name="speed" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
+[node name="damage" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
 margin_left = 107.0
 margin_right = 139.0
 margin_bottom = 32.0
@@ -73,7 +72,7 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 4 )
 stretch_mode = 1
 
-[node name="crit chance" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
+[node name="casting cost" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
 margin_left = 143.0
 margin_right = 175.0
 margin_bottom = 32.0
@@ -81,20 +80,12 @@ rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 5 )
 stretch_mode = 1
 
-[node name="wave" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
+[node name="status time" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
 margin_left = 179.0
 margin_right = 211.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 6 )
-stretch_mode = 1
-
-[node name="feather" type="TextureRect" parent="PanelContainer/VBoxContainer/stats"]
-margin_left = 215.0
-margin_right = 247.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 7 )
 stretch_mode = 1
 
 [node name="Fire" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
@@ -107,47 +98,40 @@ rect_min_size = Vector2( 32, 32 )
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 stretch_mode = 1
 
-[node name="firesizebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
+[node name="firespeedbutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="firedamagebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
+[node name="firesizebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="firespeedbutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
+[node name="firedamagebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
 margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="firecritbutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
+[node name="firecostbutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
 margin_left = 144.0
 margin_right = 176.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="firewavebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
+[node name="firetimebutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
 margin_left = 180.0
 margin_right = 212.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-text = "+"
-
-[node name="firefeatherbutton" type="Button" parent="PanelContainer/VBoxContainer/Fire"]
-margin_left = 216.0
-margin_right = 248.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
@@ -162,47 +146,40 @@ rect_min_size = Vector2( 32, 32 )
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 stretch_mode = 1
 
-[node name="icesizebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
+[node name="icespeedbutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="icedamagebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
+[node name="icesizebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="icespeedbutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
+[node name="icedamagebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
 margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="icecritbutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
+[node name="icecostbutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
 margin_left = 144.0
 margin_right = 176.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="icewavebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
+[node name="icetimebutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
 margin_left = 180.0
 margin_right = 212.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-text = "+"
-
-[node name="icefeatherbutton" type="Button" parent="PanelContainer/VBoxContainer/ice"]
-margin_left = 216.0
-margin_right = 248.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
@@ -217,65 +194,55 @@ rect_min_size = Vector2( 32, 32 )
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 2 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 stretch_mode = 1
 
-[node name="lightningsizebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
+[node name="lightningspeedbutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="lightningdamagebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
+[node name="lightningsizebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="lightningspeedbutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
+[node name="lightningdamagebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
 margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="lightningcritbutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
+[node name="lightningcostbutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
 margin_left = 144.0
 margin_right = 176.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
 
-[node name="lightningwavebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
+[node name="lightningtimebutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
 margin_left = 180.0
 margin_right = 212.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 text = "+"
-
-[node name="lightningfeatherbutton" type="Button" parent="PanelContainer/VBoxContainer/lightning"]
-margin_left = 216.0
-margin_right = 248.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
-text = "+"
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firespeedbutton" to="." method="_on_firespeedbutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firesizebutton" to="." method="_on_firesizebutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firedamagebutton" to="." method="_on_firedamagebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firespeedbutton" to="." method="_on_firespeedbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firecritbutton" to="." method="_on_firecritbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firewavebutton" to="." method="_on_firewavebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firefeatherbutton" to="." method="_on_firefeatherbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firecostbutton" to="." method="_on_firecostbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Fire/firetimebutton" to="." method="_on_firetimebutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icespeedbutton" to="." method="_on_icespeedbutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icesizebutton" to="." method="_on_icesizebutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icedamagebutton" to="." method="_on_icedamagebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icespeedbutton" to="." method="_on_icespeedbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icecritbutton" to="." method="_on_icecritbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icewavebutton" to="." method="_on_icewavebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icefeatherbutton" to="." method="_on_icefeatherbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icecostbutton" to="." method="_on_icecostbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ice/icetimebutton" to="." method="_on_icetimebutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningspeedbutton" to="." method="_on_lightningspeedbutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningsizebutton" to="." method="_on_lightningsizebutton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningdamagebutton" to="." method="_on_lightningdamagebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningspeedbutton" to="." method="_on_lightningspeedbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningcritbutton" to="." method="_on_lightningcritbutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningwavebutton" to="." method="_on_lightningwavebutton_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningfeatherbutton" to="." method="_on_lightningfeatherbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningcostbutton" to="." method="_on_lightningcostbutton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/lightning/lightningtimebutton" to="." method="_on_lightningtimebutton_pressed"]

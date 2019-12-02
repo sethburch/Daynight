@@ -46,6 +46,14 @@ func _ready():
 	add_child(travel_time)
 	travel_time.wait_time = TRAVEL_TIME
 	travel_time.start()
+	#here
+
+#when the spell is first cast (executed once)
+func _initial_cast():
+	$Sound.stream = shoot_sound
+	$Sound.pitch_scale = rand_range(0.9, 1.1)
+	$Sound.play()
+	#there
 	scale = Vector2(SIZE, SIZE)
 	
 	collision = move_and_collide(Vector2(0,0))
@@ -57,13 +65,7 @@ func _ready():
 			position += collision.normal
 		collision = move_and_collide(Vector2(0,0))
 		failsafeTimer -= 1
-
-#when the spell is first cast (executed once)
-func _initial_cast():
-	$Sound.stream = shoot_sound
-	$Sound.pitch_scale = rand_range(0.9, 1.1)
-	$Sound.play()
-	
+	#there
 	match move:
 		MOVEMENT.BEAM:
 			pass
@@ -199,14 +201,14 @@ func _on_Hitbox_body_entered(body):
 				if i.name == "SlowEffect":
 					has_slow = true
 			if !has_slow:
-				body.apply_slow(10, 2)
+				body.apply_slow(DOT_DAMAGE * 5, 2)
 		if CAN_PARALYZE:
 			var has_prl = false
 			for i in body.get_children():
 				if i.name == "ParalyzeEffect":
 					has_prl = true
 			if !has_prl:
-				body.apply_paralyze(2)
+				body.apply_paralyze(DOT_DAMAGE)
 		times_bounced = MAX_BOUNCE
 
 	#the spell has hit a wall or enemy

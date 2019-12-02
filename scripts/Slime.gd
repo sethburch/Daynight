@@ -30,6 +30,9 @@ func _physics_process(delta):
 	
 	motion.y += GRAVITY
 	
+	if motion.y > 500:
+		motion.y = 500
+	
 	collision = move_and_collide(motion * delta)
 	
 	if collision:

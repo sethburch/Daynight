@@ -32,7 +32,8 @@ func _ready():
 	$Sprites/AnimationPlayer.play("tome_float")
 	
 	if is_random:
-		current_school = school[randi() % school.size()]
+		school_num = randi() % school.size()
+		current_school = school[school_num]
 		current_movement = randi() % MOVEMENT.size()
 	else:
 		current_school = school[school_num]
