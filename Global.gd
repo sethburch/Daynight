@@ -8,6 +8,10 @@ var window_size = OS.get_window_size()
 var DayNight
 var Moon
 
+var Time
+
+enum Cycle {NIGHT, DAWN, DAY, DUSK}
+
 func _ready():
 	get_tree().connect("screen_resized", self, "_screen_resized")
 

@@ -31,3 +31,7 @@ func start():
 			
 	if unused_seasons.size() > 0:
 		unused_seasons.remove(new_season)
+
+func _on_CycleController_time(cycle_state):
+	if cycle_state == Global.Cycle.DAWN:
+		start()

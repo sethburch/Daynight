@@ -6,6 +6,8 @@ var current_tome = null
 var inventory = Array()
 var inventory_index = 0
 
+var first_tome_picked_up = false
+
 func _ready():
 	pass
 
@@ -22,7 +24,8 @@ func _on_Inventory_area_entered(area):
 		
 		
 	#when we first pick up a tome
-	if inventory.size() == 1:
+	if inventory.size() == 1 and !first_tome_picked_up:
+		first_tome_picked_up = true
 		current_tome = inventory[inventory_index]
 		get_node("..").get_node("GUILayer/GUI").set_aura_visible(true)
 		#set the tome texture and aura color on our GUI

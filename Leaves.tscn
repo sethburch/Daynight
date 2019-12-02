@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://LeafParticle.tres" type="Material" id=1]
+[ext_resource path="res://sprites/leaf.png" type="Texture" id=2]
+
+[node name="Leaves" type="Particles2D"]
+position = Vector2( -83, 0 )
+amount = 100
+lifetime = 15.0
+preprocess = 600.0
+speed_scale = 0.5
+visibility_rect = Rect2( -1000, -1000, 2000, 2000 )
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )

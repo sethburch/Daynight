@@ -88,6 +88,7 @@ func day_cycle():
 func cycle_test(new_cycle):
 	if cycle != new_cycle:
 		cycle = new_cycle
+		Global.Time = cycle
 		emit_signal("time", cycle)
 
 		if cycle == cycle_state.NIGHT:
