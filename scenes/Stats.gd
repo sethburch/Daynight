@@ -12,7 +12,9 @@ func _ready():
 			schoolstats[x].append(1)
 
 func updatestat(school, stat, increase):
-	schoolstats[school][stat] += increase
-	print(school)
-	print(stat)
-	print(schoolstats[school][stat])
+	if Global.SkillPoints > 0:
+		Global.SkillPoints-=1
+		schoolstats[school][stat] += increase
+		print(school)
+		print(stat)
+		print(schoolstats[school][stat])

@@ -121,3 +121,11 @@ func obj_exists(obj):
 		return true if is_instance_valid(obj) else false
 	if Engine.get_version_info().major <= 3 and Engine.get_version_info().minor == 0:
 		return true if weakref(obj).get_ref() != null else false
+
+func _on_GUI_next_day():
+	current_time = state_dawn_start_hour * (day_duration / 24)
+	emit_signal("time", cycle)
+
+func _on_Player_next_day():
+	current_time = state_dawn_start_hour * (day_duration / 24)
+	emit_signal("time", cycle)

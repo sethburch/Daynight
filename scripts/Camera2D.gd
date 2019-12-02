@@ -1,6 +1,6 @@
 extends Camera2D
 
-enum MODES {CURSOR, PEEK_DOWN, PEEK_UP}
+enum MODES {CURSOR, PEEK_DOWN, PEEK_UP, ZOOM}
 
 var mode = MODES.CURSOR
 
@@ -32,11 +32,21 @@ func _process(delta):
 	var offset_to
 	match mode:
 		MODES.CURSOR:
+			zoom.x = lerp(zoom.x, 1, .1)
+			zoom.y = lerp(zoom.y, 1, .1)
 			offset_to = get_local_mouse_position()
 		MODES.PEEK_DOWN:
+			zoom.x = lerp(zoom.x, 1, .1)
+			zoom.y = lerp(zoom.y, 1, .1)
 			offset_to = Vector2(0, 300)
 		MODES.PEEK_UP:
+			zoom.x = lerp(zoom.x, 1, .1)
+			zoom.y = lerp(zoom.y, 1, .1)
 			offset_to = Vector2(0, -300)
+		MODES.ZOOM:
+			offset_to = Vector2(0, 0)
+			zoom.x = lerp(zoom.x, .5, .1)
+			zoom.y = lerp(zoom.y, .5, .1)
 	
 	offset = lerp(offset, lerp(Vector2(0,0), offset_to, 0.3), 0.1)
 	

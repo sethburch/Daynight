@@ -262,6 +262,16 @@ func _ready():
 #	# load it in!
 #	initial_load_chunks()
 	$TileMap.update_bitmask_region()
+	
+	#update snow and rain tilesets
+	for i in range(-200, 1000):
+		for j in range(-200, 1000):
+			$SnowBottomTile.set_cell(i, j, 0)
+			$SnowTopTile.set_cell(i, j, 0)
+			if $TileMap.get_cell(i, j) != TileMap.INVALID_CELL:
+				$RainSplashTile.set_cell((i*4), (j*4)-3, 0)
+				break
+			$RainTile.set_cell(i, j, 0)
 
 
 func create_branch(x, y, dir):
@@ -417,8 +427,8 @@ func _process(delta):
 		$Camera2D.zoom += Vector2(0.5, 0.5)
 	if Input.is_action_just_pressed("scroll_down"):
 		$Camera2D.zoom -= Vector2(0.5, 0.5)
-##	if Input.is_action_just_pressed("reset"):
-#		#get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
 #	if (int($Camera2D.offset.x)) % node_width == 0 and previous_load != int($Camera2D.offset.x):
 #		#remove_chunks()
 #		previous_load = int($Camera2D.offset.x)
@@ -428,3 +438,11 @@ func _process(delta):
 #		load_chunks()
 #		cur_chunk+=1
 	pass
+
+func _on_Player_end_day():
+	yield(get_tree().create_timer(0.3), 'timeout')
+	$Player.enable_upgrade_window()
+	get_tree().paused = true
+
+func _on_Player_next_day():
+	get_tree().paused = false

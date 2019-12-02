@@ -6,7 +6,7 @@
 editor/display_folded = true
 use_parent_material = true
 script = ExtResource( 1 )
-day_duration = 3.0
+day_duration = 1.0
 day_start_hour = 5.0
 color_dawn = Color( 0.964706, 0.466667, 0.619608, 1 )
 color_dusk = Color( 0.988235, 0.411765, 0.12549, 1 )

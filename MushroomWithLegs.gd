@@ -12,6 +12,8 @@ var rng = RandomNumberGenerator.new()
 var anim = ""
 var new_anim = ""
 
+var facing_right = true
+
 onready var home = get_position()
 onready var player = get_parent().get_parent().get_parent().get_node("../Player")
 onready var detectionRadius = get_node("PlayerDetect")
@@ -21,6 +23,7 @@ func _physics_process(delta):
 	._physics_process(delta)
 	if player == null:
 		return
+	$BodySprite.flip_h = facing_right
 	if detectionRadius.overlaps_body(player):
 		target = player.get_position()
 		chase()
@@ -60,8 +63,10 @@ func _physics_process(delta):
 
 func chase():
 	if target.x < global_position.x:
+		facing_right = false
 		motion.x -= ACCEL
 	elif target.x > global_position.x:
+		facing_right = true
 		motion.x += ACCEL
 	if (is_on_floor()) && (abs(position.x - target.x) < 80) && (target.y < position.y):
 		motion.y = speed * -2

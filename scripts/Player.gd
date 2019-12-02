@@ -46,6 +46,9 @@ export(int) var i_frames = 60
 export(int) var CAST_SPEED = 60
 var cast_timer = 0
 
+signal end_day
+signal next_day
+
 func _ready():
 	add_to_group("Player")
 
@@ -79,19 +82,23 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("jump"):
 				set_collision_layer_bit(5, 0)
 				set_collision_mask_bit(5, 0)
-			$Camera2D.mode = $Camera2D.MODES.PEEK_DOWN
+			if $Camera2D.mode != $Camera2D.MODES.ZOOM:
+				$Camera2D.mode = $Camera2D.MODES.PEEK_DOWN
 			if anim != "crouching" and anim != "to_crouch":
 				new_anim = "to_crouch"
 		elif Input.is_action_pressed("move_up") and (!Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right")):
-			$Camera2D.mode = $Camera2D.MODES.PEEK_UP
+			if $Camera2D.mode != $Camera2D.MODES.ZOOM:
+				$Camera2D.mode = $Camera2D.MODES.PEEK_UP
 			if anim != "looking_up" and anim != "look_up":
 				new_anim = "look_up"
 		else:
-			$Camera2D.mode = $Camera2D.MODES.CURSOR
+			if $Camera2D.mode != $Camera2D.MODES.ZOOM:
+				$Camera2D.mode = $Camera2D.MODES.CURSOR
 			#new_anim = "idle"
 			crouching = false
 	else:
-		$Camera2D.mode = $Camera2D.MODES.CURSOR
+		if $Camera2D.mode != $Camera2D.MODES.ZOOM:
+			$Camera2D.mode = $Camera2D.MODES.CURSOR
 		#new_anim = "idle"
 		crouching = false
 	
@@ -325,3 +332,20 @@ func _on_LadderRadius_area_entered(area):
 func _on_LadderRadius_area_exited(area):
 	if area.name == "Ladder":
 		current_ladder = null
+
+func _on_GUI_end_day():
+	$Camera2D.mode = $Camera2D.MODES.ZOOM
+	get_tree().paused = true
+	yield(get_tree().create_timer(0.3), 'timeout')
+	get_tree().paused = false
+	$FlickeringLight.fade()
+	#$GUILayer/GUI.fade_out()
+	emit_signal("end_day")
+
+func enable_upgrade_window():
+	$GUILayer/GUI.enable_upgrade_window()
+
+func _on_GUI_next_day():
+	$GUILayer/GUI.disable_upgrade_window()
+	$Camera2D.mode = $Camera2D.MODES.CURSOR
+	emit_signal("next_day")

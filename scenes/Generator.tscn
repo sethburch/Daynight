@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Generator.gd" type="Script" id=1]
 [ext_resource path="res://GrassTileset2.tres" type="TileSet" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://scenes/LeafController.gd" type="Script" id=5]
 [ext_resource path="res://Leaves.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SeasonController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Tome.tscn" type="PackedScene" id=8]
+[ext_resource path="res://RainSplash.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Rain.tscn" type="PackedScene" id=10]
+[ext_resource path="res://SnowTop.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SnowBottom.tscn" type="PackedScene" id=12]
 
 [node name="Generator" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,4 +45,22 @@ position = Vector2( 2000, 0 )
 position = Vector2( 0, 0 )
 
 [node name="SeasonController" parent="." instance=ExtResource( 7 )]
+
+[node name="Tome" parent="." instance=ExtResource( 8 )]
+position = Vector2( 272, 288 )
+
+[node name="RainSplashTile" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="RainTile" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[node name="SnowTopTile" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="SnowBottomTile" parent="." instance=ExtResource( 12 )]
+visible = false
+[connection signal="end_day" from="Player" to="." method="_on_Player_end_day"]
+[connection signal="next_day" from="Player" to="CycleController" method="_on_Player_next_day"]
+[connection signal="next_day" from="Player" to="." method="_on_Player_next_day"]
 [connection signal="time" from="CycleController" to="SeasonController" method="_on_CycleController_time"]

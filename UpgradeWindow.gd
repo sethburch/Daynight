@@ -60,3 +60,11 @@ func _on_lightningcostbutton_pressed():
 
 func _on_lightningtimebutton_pressed():
 	playerstats.updatestat(playerstats.schools.lightning, playerstats.stats.time, 1)
+
+func _process(delta):
+	$TextureRect/SkillPoints.text = str(Global.SkillPoints)
+	
+func fade_in():
+	$AnimationPlayer.play("fade_in")
+func fade_out():
+	$AnimationPlayer.play_backwards("fade_in")

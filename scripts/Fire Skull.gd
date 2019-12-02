@@ -8,7 +8,7 @@ var target = Vector2()
 var rng = RandomNumberGenerator.new()
 
 onready var home = get_position()
-onready var player = get_node("../Player")
+onready var player = get_parent().get_parent().get_parent().get_node("../Player")
 onready var detectionRadius = get_node("PlayerDetect")
 
 var fire_spell = preload("../scenes/SpellFire.tscn")
@@ -20,6 +20,8 @@ func _ready():
 
 func _physics_process(delta):
 	._physics_process(delta)
+	if player == null:
+		return
 	if detectionRadius.overlaps_body(player):
 		target = player.get_position()
 		if position.distance_to(player.get_position()) > 150:

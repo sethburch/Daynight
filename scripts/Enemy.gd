@@ -75,7 +75,12 @@ func damage(damage, crit_chance, knockback_dir, spell, is_dot):
 	set_process(true)
 	
 func _process(delta):
+	#kill enemy
 	if health <= 0:
+		#increment skill points
+		Global.EnemyKillCount+=1
+		if Global.EnemyKillCount % 2 == 0:
+			Global.SkillPoints+=1
 		var sound = get_parent().get_parent().get_parent().get_node("../WorldSound")
 		sound.stream = death_sound
 		sound.pitch_scale = rand_range(0.9, 1.1)

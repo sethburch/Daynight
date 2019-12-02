@@ -7,11 +7,11 @@ func _ready():
 	for i in range(-100, 100):
 		for j in range(-100, 100):
 			if $TileMap.get_cell(i, j) != TileMap.INVALID_CELL:
-				#$RainSplash.set_cell((i*4), (j*4)-3, 0)
+				$RainSplash.set_cell((i*4), (j*4)-3, 0)
 				break
-			#$Rain.set_cell(i, j, 0)
-			$SnowBottom.set_cell(i, j, 0)
-			$SnowTop.set_cell(i, j, 0)
+			$Rain.set_cell(i, j, 0)
+			#$SnowBottom.set_cell(i, j, 0)
+			#$SnowTop.set_cell(i, j, 0)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("reset"):

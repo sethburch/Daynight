@@ -2,9 +2,18 @@ extends Control
 
 var new_health = 100
 
+signal end_day
+signal next_day
+var day_ended = false
+
 func _process(delta):
-	if Input.is_action_just_pressed("inventory_open"):
-		$UpgradeWindow.visible = !$UpgradeWindow.visible
+	if !day_ended:
+		if Global.Time == Global.Cycle.NIGHT:
+			$EndDayButton.visible = true
+		else:
+			$EndDayButton.visible = false
+	
+#	if Input.is_action_just_pressed("inventory_open"):
 	$Cursor.rect_position = get_local_mouse_position() + Vector2(10, 10)
 	$HealthOver/Health.value = lerp($HealthOver/Health.value, new_health, 0.1)
 
@@ -35,3 +44,29 @@ func set_health(health, max_health):
 	#$HealthOver/Health.value = health
 	new_health = health
 	$HealthText.text = str(health) + " / " + str(max_health);
+
+func _on_EndDayButton_pressed():
+	$EndDayButton.visible = false
+	if $EndDayButton.text == "End Day":
+		day_ended = true
+		$EndDayButton.text = "Continue"
+		emit_signal("end_day")
+	elif $EndDayButton.text == "Continue":
+		day_ended = false
+		$EndDayButton.text = "End Day"
+		emit_signal("next_day")
+
+func fade_out():
+	$AnimationPlayer.play("fade_out")
+	
+func fade_in():
+	$AnimationPlayer.play("fade_in")
+	
+func enable_upgrade_window():
+	$EndDayButton.visible = true
+	$UpgradeWindow.visible = true
+	$UpgradeWindow.fade_in()
+	
+func disable_upgrade_window():
+	$UpgradeWindow.visible = false
+	$UpgradeWindow.fade_out()

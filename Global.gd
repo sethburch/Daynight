@@ -10,6 +10,9 @@ var Moon
 
 var Time
 
+var SkillPoints = 0
+var EnemyKillCount = 0
+
 enum Cycle {NIGHT, DAWN, DAY, DUSK}
 
 func _ready():
