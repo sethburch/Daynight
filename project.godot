@@ -40,12 +40,12 @@ _global_script_class_icons={
 
 config/name="Daynight"
 run/main_scene="res://scenes/Generator.tscn"
-config/icon="res://icon.png"
+config/icon="res://sprites/icon.png"
 
 [autoload]
 
-Global="*res://Global.gd"
-MusicManager="*res://MusicManager.gd"
+Global="*res://scripts/Global.gd"
+MusicManager="*res://scripts/MusicManager.gd"
 
 [display]
 
@@ -53,7 +53,7 @@ window/size/width=480
 window/size/height=270
 window/size/test_width=960
 window/size/test_height=540
-mouse_cursor/custom_image="res://cursor_sprite.png"
+mouse_cursor/custom_image="res://sprites/cursor_sprite.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 

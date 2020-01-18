@@ -8,8 +8,9 @@
 [ext_resource path="res://materials/DefaultFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://sprites/window.png" type="Texture" id=7]
 [ext_resource path="res://sprites/tomes/default_aura.png" type="Texture" id=8]
-[ext_resource path="res://UpgradeWindow.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/UpgradeWindow.tscn" type="PackedScene" id=9]
 [ext_resource path="res://sprites/tomes/book_arc.png" type="Texture" id=10]
+
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
