@@ -179,7 +179,7 @@ func _on_Hitbox_body_entered(body):
 		return
 
 	if body.is_in_group("Player"):
-		body.damage(DAMAGE, velocity)
+		body.damage(DAMAGE*spell_owner.time_modifier, velocity)
 		
 	if body.is_in_group("Enemy"):
 		#prevents friendly fire

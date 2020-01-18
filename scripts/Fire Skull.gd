@@ -20,11 +20,11 @@ func _ready():
 
 func _physics_process(delta):
 	._physics_process(delta)
-	if player == null:
-		return
+#	if player == null:
+#		return
 	if detectionRadius.overlaps_body(player):
-		target = player.get_position()
-		if position.distance_to(player.get_position()) > 150:
+		target = player.get_global_position()
+		if global_position.distance_to(player.get_global_position()) > 150:
 			chase()
 		else:
 			if target.x < global_position.x:
@@ -81,8 +81,8 @@ func wander():
 func attack():
 	var this_spell = fire_spell.instance()
 	this_spell.move = MOVEMENT.BEAM
-	this_spell.dir = position.direction_to(player.position)#Vector2(sign(player.position.x - position.x), 0)
-	this_spell.position = position + (this_spell.dir*20)
+	this_spell.dir = global_position.direction_to(player.global_position)#Vector2(sign(player.position.x - position.x), 0)
+	this_spell.global_position = global_position + (this_spell.dir*20)
 	this_spell.spell_owner = self
 	this_spell.DAMAGE = DAMAGE
 	get_node("..").add_child(this_spell)

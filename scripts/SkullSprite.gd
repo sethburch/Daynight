@@ -7,6 +7,6 @@ func _process(delta):
 		set_animation("Attack")
 	else: set_animation("Idle")
 	
-	if fireSkull.target.x < fireSkull.get_position().x:
+	if fireSkull.target.x < fireSkull.get_global_position().x:
 		set_flip_h(true)
 	else: set_flip_h(false)

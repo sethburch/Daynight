@@ -60,7 +60,11 @@ visible = false
 
 [node name="SnowBottomTile" parent="." instance=ExtResource( 12 )]
 visible = false
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 [connection signal="end_day" from="Player" to="." method="_on_Player_end_day"]
 [connection signal="next_day" from="Player" to="CycleController" method="_on_Player_next_day"]
 [connection signal="next_day" from="Player" to="." method="_on_Player_next_day"]
 [connection signal="time" from="CycleController" to="SeasonController" method="_on_CycleController_time"]
+[connection signal="time" from="CycleController" to="." method="_on_CycleController_time"]

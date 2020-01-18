@@ -349,3 +349,7 @@ func _on_GUI_next_day():
 	$GUILayer/GUI.disable_upgrade_window()
 	$Camera2D.mode = $Camera2D.MODES.CURSOR
 	emit_signal("next_day")
+
+func add_health(h):
+	health+=h
+	$GUILayer/GUI.set_health(h, MAX_HEALTH)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PK Rockin.wav-27a1d789d56767a99fe923a7ca6ee255.sample"
+
+[deps]
+
+source_file="res://sound/music/PK Rockin.wav"
+dest_files=[ "res://.import/PK Rockin.wav-27a1d789d56767a99fe923a7ca6ee255.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0

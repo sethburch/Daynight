@@ -29,4 +29,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Area2D_body_entered(body):
 	if body is Player:
-		body.damage(DAMAGE, (body.position - position).normalized() * 6)
+		body.damage(DAMAGE*time_modifier, (body.position - position).normalized() * 6)
